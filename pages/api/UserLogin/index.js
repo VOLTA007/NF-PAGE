@@ -1,10 +1,17 @@
-import { createRouter } from 'next-connect'
 import dbConnectLogin from '@/utils/dbConnectLogin'
 import UserLogin from '@/models/UserLogin'
+import NextCors from 'nextjs-cors'
 
 dbConnectLogin()
 
-const router = createRouter().post(async (req, res) => {
+export default async function handler(req, res) {
+
+    await NextCors(req, res, {
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200,
+    })
+
     try {
         const { email, password } = req.body
 
@@ -35,11 +42,4 @@ const router = createRouter().post(async (req, res) => {
             message: 'Internal Server Error',
         })
     }
-})
-
-export default router.handler({
-    onError: (err, req, res) => {
-        console.error(err.stack)
-        res.status(err.statusCode || 500).end(err.message)
-    },
-})
+}
