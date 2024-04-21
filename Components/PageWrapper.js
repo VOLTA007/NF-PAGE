@@ -8,6 +8,8 @@ import Footer from '@/Components/Footer'
 import Header from '@/Components/Header'
 import NavBar2 from '@/Components/NavBar2'
 import NavbarDesktop from '@/Components/NavbarDesktop'
+import Innernav from './Innernav'
+
 
 const PageWrapper = ({ children }) => {
     const [isMobile, setIsMobile] = useState(null)
@@ -103,7 +105,11 @@ const PageWrapper = ({ children }) => {
                                                 isactive ? 'open' : 'closed'
                                             }
                                             initial="closed"
-                                        ></motion.div>
+                                        >
+                                            <AnimatePresence>
+                                                {isactive && <Innernav />}
+                                            </AnimatePresence>
+                                        </motion.div>
                                     </div>
                                     <NavBar2
                                         isactive={isactive}

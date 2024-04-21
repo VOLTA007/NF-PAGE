@@ -28,23 +28,21 @@ const Innernav = () => {
     }
 
     return (
-        <div className="h-full pt-[100px] pr-[40px] pb-[50px] pl-[40px] box-border">
-            <div className="">
-                {Links.map(
-                    (link,i ) => (
-                        <div key={i}>
-                            <motion.div
-                                custom={i}
-                                variants={pers}
-                                animate="enter"
-                                exit="exit"
-                                initial="initial"
-                            >
-                                <Link href={link.href}>{link.title}</Link>
-                            </motion.div>
-                        </div>
-                    )
-                )}
+        <div className="h-full pt-[60px] pr-[40px] pb-[50px] pl-[40px] box-border text-2xl">
+            <div className="flex gap-1 flex-col">
+                {Links.map((link, i) => (
+                    <div key={i}>
+                        <motion.div
+                            custom={i}
+                            variants={pers}
+                            animate="enter"
+                            exit="exit"
+                            initial="initial"
+                        >
+                            <Link href={link.href}>{link.title}</Link>
+                        </motion.div>
+                    </div>
+                ))}
             </div>
         </div>
     )
