@@ -117,7 +117,7 @@ export default function Signup() {
                         </span>
                         Welcome To Nutrifit :)
                     </h1>
-
+                    
                     <div className="max-w-sm mx-auto">
                         <label
                             htmlFor="website-admin"
@@ -147,18 +147,6 @@ export default function Signup() {
                             />
                         </div>
                     </div>
-
-                    {/* <div className={styles.inputcontainer}>
-                        <input 
-                            onChange={(e) => setEmail(e.target.value)}
-                            type="email" 
-                            value={email}
-                            className={`${styles.input} rounded-md p-2 ${isLoading ? styles.disabled : ''}`} 
-                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                            required
-                        />
-                        <img src="./email.png" className={styles.icon} style={{ maxHeight: '20px', maxWidth: '20px' }} alt="Email icon" />
-                    </div> */}
 
                     <div className="max-w-sm mx-auto">
                         <label
