@@ -6,7 +6,7 @@ dbConnectLogin()
 export default async function handler(req, res) {
     try {
         // Parse query parameters from the request URL
-        const { paymentStatus, email } = req.query // Extract email from query parameters
+        const { paymentStatus, email } = req.query 
 
         if (!email) {
             console.log('Customer email not provided')
