@@ -2,7 +2,10 @@ import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const NavBar2 = ({ isactive, setIsactive }) => {
+
     const sideMenuRef = useRef(null)
+
+
 
     useEffect(() => {
         function handleClickOutside(event) {

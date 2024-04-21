@@ -1,7 +1,7 @@
 import React from 'react'
-import Links from './datanav'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useSession, signOut } from 'next-auth/react'
 
 const Innernav = () => {
     const pers = {
@@ -27,6 +27,24 @@ const Innernav = () => {
         }),
     }
 
+    const { data: session } = useSession() // Using next-auth's useSession hook
+
+    const Links = [
+        { title: 'Home', href: '/Home' },
+        { title: 'About', href: '/About' },
+        { title: 'Pricing', href: '/Pricing' },
+        {
+            title: session?.user ? 'Logout' : 'Login', // Check if user is authenticated
+            href: session?.user ? '#' : '/Login', // Use '#' for Logout when authenticated
+            onClick: () => {
+                if (session?.user) {
+                    // If user is authenticated, perform sign out
+                    signOut()
+                }
+            },
+        },
+    ]
+
     return (
         <div className="h-full pt-[60px] pr-[40px] pb-[50px] pl-[40px] box-border text-2xl">
             <div className="flex gap-1 flex-col">
@@ -39,7 +57,14 @@ const Innernav = () => {
                             exit="exit"
                             initial="initial"
                         >
-                            <Link href={link.href}>{link.title}</Link>
+                            {/* Render link as a regular anchor or Next.js Link */}
+                            {link.onClick ? (
+                                <Link href={link.href} onClick={link.onClick}>
+                                    {link.title}
+                                </Link>
+                            ) : (
+                                <Link href={link.href}>{link.title}</Link>
+                            )}
                         </motion.div>
                     </div>
                 ))}
