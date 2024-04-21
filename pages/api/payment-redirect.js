@@ -3,11 +3,9 @@ import UserLogin from '@/models/UserLogin'
 import { useSession } from 'next-auth/react'
 
 dbConnectLogin()
+const { data: session } = useSession()
 
 export default async function handler(req, res) {
-
-      const { data: session } = useSession()
-
 
     try {
         // Retrieve the user session
