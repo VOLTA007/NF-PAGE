@@ -5,16 +5,8 @@ dbConnectLogin()
 
 export default async function handler(req, res) {
     try {
-        const { email } = req.body // Extract email from the request body
+        const { email } = req.body 
 
-        if (!email) {
-            console.log('Customer email not provided')
-            return res
-                .status(400)
-                .json({ error: 'Customer email not provided' })
-        }
-
-        // Proceed with paymentStatus check after capturing the email
         const { paymentStatus } = req.query
 
         if (paymentStatus === 'SUCCESS') {
