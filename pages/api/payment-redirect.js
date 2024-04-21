@@ -12,6 +12,11 @@ export default async function handler(req, res) {
         // Parse query parameters from the request URL
         const { paymentStatus } = req.query
 
+        if (!session) {
+            console.log('Session not found')
+            return res.status(401).json({ error: 'User session not found' })
+        }
+
         if (paymentStatus === 'SUCCESS') {
             // Payment successful
             if (session) {
