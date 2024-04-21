@@ -7,9 +7,12 @@ dbConnectLogin()
 
 
 export default async function handler(req, res) {
+
+   const { data: session, status } = useSession()
+   
     try {
         // Retrieve the user session
-        const { data: session, status } = useSession()
+       
         // Parse query parameters from the request URL
         const { paymentStatus } = req.query
 
