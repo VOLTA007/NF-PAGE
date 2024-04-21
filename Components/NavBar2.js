@@ -25,7 +25,7 @@ const NavBar2 = ({ isactive, setIsactive }) => {
     return (
         <div
             onClick={() => setIsactive(!isactive)}
-            className="absolute top-[65px] right-2 uppercase h-[40px] w-[100px] bg-hsl-88-95-71 rounded-[25px] cursor-pointer overflow-hidden z-40"
+            className="absolute top-[65px] right-2 uppercase h-[40px] w-[100px] bg-limee rounded-[25px] cursor-pointer overflow-hidden z-40"
         >
             <motion.div
                 ref={sideMenuRef}
