@@ -99,7 +99,7 @@ const PageWrapper = ({ children }) => {
                                 <>
                                     <div className="absolute top-[65px] right-[8px] z-40">
                                         <motion.div
-                                            className="bg-[#c9fd74] rounded-[25px] relative z-40"
+                                            className="bg-hsl-88-95-71 rounded-[25px] relative z-40"
                                             variants={variants}
                                             animate={
                                                 isactive ? 'open' : 'closed'
