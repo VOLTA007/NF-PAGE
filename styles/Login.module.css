@@ -1,0 +1,130 @@
+.but {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: hsl(0,0%,8%);
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.inputcontainer {
+  position: relative; /* Set position relative for the container */
+  display: flex;
+  align-items: center; /* Align icon vertically */
+}
+
+.input {
+  flex: 1;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%; /* Position the icon vertically at the center of the container */
+  right: 10px; /* Adjust as needed */
+  transform: translateY(-50%); /* Move the icon up by half of its height */
+  width: 20px; /* Set icon width */
+  height: 20px; /* Set icon height */
+}
+
+
+
+.notification {
+  position: fixed;
+  overflow: hidden;
+  visibility: hidden;
+  top: -100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  width: auto;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  transition: top 0.5s ease;
+  animation: noti 5s ease forwards;
+}
+
+.show {
+  visibility: visible;
+}
+
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  border-radius: 50px;
+  width: 100%;
+  background-color: hsl(63,96%,53%);
+  animation: fillBar 5s ease forwards;
+}
+
+.disabled {
+  opacity: 0.5; /* Dim the inputs */
+  pointer-events: none; /* Disable pointer events */
+}
+
+.but[disabled] {
+  cursor: not-allowed; /* Change cursor style of disabled button */
+}
+.but {
+  display: grid;
+  place-content: center;
+}
+
+.loader{
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #fff;
+  animation: an1 1s ease infinite;
+}
+
+@keyframes an1 {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+
+@keyframes fillBar {
+  0% {
+    width: 100%; 
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes noti {
+  0% {
+    top: 0px; 
+  }
+  20% {
+    top: 190px; 
+  }
+  25% {
+    top: 179px; 
+  }
+  40% {
+    top: 179px; 
+  }
+  80% {
+    top: 179px; 
+  }
+  100% {
+    top: -10px;
+  }
+}

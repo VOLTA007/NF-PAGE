@@ -1,33 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer components {
+    body {
+        @apply dark:bg-[#0d121b] transition-colors duration-500;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    min-height: 100vh; /* Minimum height of 100vh */
+    display: flex;
+    flex-direction: column;
+}
+#root {
+    flex: 1; /* Use remaining space within the flex container */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+body::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
 }

@@ -1,0 +1,52 @@
+.navcontainer {
+    background-color: hsl(0, 0%, 8%);
+    width: 100%;
+    height: 112px;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    z-index: 4;
+}
+
+.Logo {
+    width: 120px;
+    border-radius: 20px;
+}
+
+.loader {
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    animation: an1 1s ease infinite;
+}
+
+.header1{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 32px;
+    background-color: hsl(0,0%,14%);
+    z-index: 1;
+}
+
+
+.paragraph1{
+    color: white;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+} 
+
+@keyframes an1 {
+    0% {
+        transform: rotate(0turn);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
