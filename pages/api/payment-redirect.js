@@ -1,14 +1,22 @@
 import dbConnectLogin from '@/utils/dbConnectLogin'
 import UserLogin from '@/models/UserLogin'
 import { getSession } from 'next-auth/react'
+import Cors from 'next-cors'
 
 dbConnectLogin()
 
+const cors = Cors({
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Define allowed HTTP methods
+})
 
 export default async function handler(req, res) {
     try {
+        // Apply CORS middleware to handle cross-origin requests
+        await cors(req, res)
+
         // Retrieve the user session
         const session = await getSession({ req })
+
         // Parse query parameters from the request URL
         const { paymentStatus } = req.query
 
