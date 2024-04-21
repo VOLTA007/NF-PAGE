@@ -6,8 +6,7 @@ import {
     faTurnUp,
     faGear,
 } from '@fortawesome/free-solid-svg-icons'
-import { useRouter } from 'next/navigation'
-import PageWrapper from '@/Components/PageWrapper'
+import { useRouter } from 'next/router'
 
 const Pricing = () => {
     const [isclicked, setisclicked] = useState(null)

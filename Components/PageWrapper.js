@@ -1,6 +1,6 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/router'
 import { NextUIProvider } from '@nextui-org/react'
 import { SessionProvider } from 'next-auth/react'
 import { useEffect, useState } from 'react'

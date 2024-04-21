@@ -2,7 +2,7 @@ import React from 'react'
 import { generateKashierOrderHash } from '@/utils/generateKashierOrderHash'
 import config from '@/utils/Config2'
 import domain from '@/utils/Config'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 const PayPage = () => {
     const router = useRouter()
