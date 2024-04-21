@@ -5,8 +5,7 @@ dbConnectLogin()
 
 export default async function handler(req, res) {
     try {
-        // Parse query parameters from the request URL
-        const { paymentStatus, email } = req.query 
+        const { email } = req.body // Extract email from the request body
 
         if (!email) {
             console.log('Customer email not provided')
@@ -14,6 +13,9 @@ export default async function handler(req, res) {
                 .status(400)
                 .json({ error: 'Customer email not provided' })
         }
+
+        // Proceed with paymentStatus check after capturing the email
+        const { paymentStatus } = req.query
 
         if (paymentStatus === 'SUCCESS') {
             // Payment successful
@@ -29,9 +31,9 @@ export default async function handler(req, res) {
                 return res.end()
             } else {
                 console.log('User not found or update failed')
-                return res.status(404).json({
-                    error: 'User not found or update failed',
-                })
+                return res
+                    .status(404)
+                    .json({ error: 'User not found or update failed' })
             }
         } else if (paymentStatus === 'FAILED') {
             // Payment failed

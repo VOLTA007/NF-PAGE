@@ -4,16 +4,29 @@ import config from '@/utils/Config2'
 import domain from '@/utils/Config'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
+import axios from 'axios'
 
 const PayPage = ({ amount, currency }) => {
 
     const { data: session } = useSession()
+    const userEmail = session.user.email
     const router = useRouter()
 
     const { baseUrl } = config
     const configObj = config[config.mode]
 
     const formattedAmount = amount ? amount.toString() : '1.00'
+
+    useEffect(() => {
+        // Make Axios POST request to API endpoint each time component is rendered
+        if (userEmail) {
+            const requestData = { email: userEmail }
+
+            axios.post('/api/payment-redirect', requestData).catch((error) => {
+                console.error('API Error:', error)
+            })
+        }
+    }, [amount])
 
     const order = {
         amount: formattedAmount,
@@ -23,7 +36,7 @@ const PayPage = ({ amount, currency }) => {
         secret: configObj.PaymentApiKey,
         baseUrl: configObj.baseUrl,
         metaData: JSON.stringify({
-            'Cutomer Email': `${session.user.email}`,
+            'Cutomer Email': `${userEmail}`,
         }),
         merchantRedirect: `${domain}/payment-redirect`,
         display: 'en',
