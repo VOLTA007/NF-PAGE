@@ -4,15 +4,17 @@ import config from '@/utils/Config2'
 import domain from '@/utils/Config'
 import { useRouter } from 'next/router'
 
-const PayPage = () => {
+const PayPage = ({ amount, currency }) => {
     const router = useRouter()
 
     const { baseUrl } = config
     const configObj = config[config.mode]
 
+    const formattedAmount = amount ? amount.toString() : '1.00'
+
     const order = {
-        amount: '1.00',
-        currency: 'EGP',
+        amount: formattedAmount,
+        currency: currency || 'EGP',
         merchantOrderId: Date.now(),
         mid: configObj.mid,
         secret: configObj.PaymentApiKey,
@@ -50,8 +52,13 @@ const PayPage = () => {
 
     return (
         <div>
-            <a href={hppUrl} target="_blank" rel="noopener noreferrer">
-                Hosted Checkout
+            <a
+                className="bg-red-500"
+                href={hppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Pay Now !
             </a>
             <br />
 
