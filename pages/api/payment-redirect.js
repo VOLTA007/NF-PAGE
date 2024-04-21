@@ -1,15 +1,16 @@
 import dbConnectLogin from '@/utils/dbConnectLogin'
 import UserLogin from '@/models/UserLogin'
-import { getSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 dbConnectLogin()
 
 export default async function handler(req, res) {
 
+      const { data: session } = useSession()
+
 
     try {
         // Retrieve the user session
-        const session = await getSession({ req })
 
         // Parse query parameters from the request URL
         const { paymentStatus } = req.query
