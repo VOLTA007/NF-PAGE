@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Links from './datanav'
 import { motion } from 'framer-motion'

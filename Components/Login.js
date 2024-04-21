@@ -1,4 +1,3 @@
-'use client'
 import { useState, useEffect } from 'react'
 import styles from '@/styles/Login.module.css'
 import axios from 'axios'
