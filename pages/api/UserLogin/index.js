@@ -6,8 +6,10 @@ import UserLogin from '@/models/UserLogin'
 dbConnectLogin()
 
 const corsOptions = {
-    origin: 'https://nfpage.vercel.app', // Replace with your frontend origin
-    credentials: true, // Include cookies for authorized requests (if applicable)
+    origin: '*',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    credentials: true,
+    optionsSuccessStatus: 204,
 }
 
 const router = createRouter()
