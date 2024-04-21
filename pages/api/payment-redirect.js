@@ -1,13 +1,11 @@
 import dbConnectLogin from '@/utils/dbConnectLogin'
 import UserLogin from '@/models/UserLogin'
 import { getSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
 
 dbConnectLogin()
 
 export default async function handler(req, res) {
-  
-  const router = useRouter()
+
 
     try {
         // Retrieve the user session
@@ -25,11 +23,11 @@ export default async function handler(req, res) {
                     { email: userEmail },
                     { is_subscribed: true },
                     { new: true }
-
                 )
 
                 if (updatedUser) {
-                    router.push('/Home')
+                    res.writeHead(302, { Location: '/Home' })
+                    res.end()
                     console.log('User subscription updated successfully')
                     res.status(200).json({ message: 'Payment successful' })
                 } else {
