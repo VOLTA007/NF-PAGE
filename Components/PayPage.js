@@ -3,8 +3,11 @@ import { generateKashierOrderHash } from '@/utils/generateKashierOrderHash'
 import config from '@/utils/Config2'
 import domain from '@/utils/Config'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 const PayPage = ({ amount, currency }) => {
+
+    const { data: session } = useSession()
     const router = useRouter()
 
     const { baseUrl } = config
@@ -20,7 +23,7 @@ const PayPage = ({ amount, currency }) => {
         secret: configObj.PaymentApiKey,
         baseUrl: configObj.baseUrl,
         metaData: JSON.stringify({
-            'Cutomer Email': 'mkhalid@kashier.io',
+            'Cutomer Email': `${session.user.email}`,
         }),
         merchantRedirect: `${domain}/payment-redirect`,
         display: 'en',
