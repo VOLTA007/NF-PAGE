@@ -23,7 +23,11 @@ export default async function handler(req, res) {
 
             if (updatedUser) {
                 console.log('User subscription updated successfully')
-                return res.status(200).json({ message: 'Payment successful' })
+                return res.status(200).send(`
+                    <script>
+                        window.close();
+                    </script>
+                `)
             } else {
                 console.log('User not found or update failed')
                 return res
