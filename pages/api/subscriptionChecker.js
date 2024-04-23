@@ -1,6 +1,6 @@
 const cron = require('node-cron')
-const UserLogin = require('../models/UserLogin')
-const dbcon2 = require('../utils/dbcon2')
+const UserLogin = require('../../models/UserLogin')
+const dbcon2 = require('../../utils/dbcon2')
 
 dbcon2()
 
