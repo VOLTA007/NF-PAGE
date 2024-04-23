@@ -3,6 +3,22 @@ import UserLogin from '@/models/UserLogin'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from './auth/[...nextauth]'
 
+// Pricing information based on subscription types and currency
+const pricing = {
+    Beginner: {
+        EGP: 400, // 1 month period
+        USD: 100, // 1 month period
+    },
+    Advanced: {
+        EGP: 600, // 3 month period
+        USD: 200, // 3 month period
+    },
+    Premium: {
+        EGP: 999, // 6 month period
+        USD: 300, // 6 month period
+    },
+}
+
 dbConnectLogin()
 
 export default async function handler(req, res) {
@@ -10,29 +26,66 @@ export default async function handler(req, res) {
 
     try {
         const { paymentStatus } = req.query
-        console.log(session)
         const email = session?.user?.email
 
         if (paymentStatus === 'SUCCESS') {
-            // Payment successful, update user subscription
-            const updatedUser = await UserLogin.findOneAndUpdate(
-                { email: email },
-                { is_subscribed: true },
-                { new: true }
-            )
+            const { amount, currency } = req.query
 
-            if (updatedUser) {
-                console.log('User subscription updated successfully')
-                return res.status(200).send(`
-                    <script>
-                        window.close();
-                    </script>
-                `)
+            // Determine subscription type based on amount and currency
+            let subscriptionType = null
+            if (currency === 'EGP') {
+                if (amount == 400) subscriptionType = 'Beginner'
+                else if (amount == 600) subscriptionType = 'Advanced'
+                else if (amount == 999) subscriptionType = 'Premium'
+            } else if (currency === 'USD') {
+                if (amount == 100) subscriptionType = 'Beginner'
+                else if (amount == 200) subscriptionType = 'Advanced'
+                else if (amount == 300) subscriptionType = 'Premium'
+            }
+
+            if (subscriptionType) {
+                const subscriptionPeriodInMonths = {
+                    Beginner: 1,
+                    Advanced: 3,
+                    Premium: 6,
+                }[subscriptionType]
+
+                // Calculate the expiration date based on current date + subscription period
+                const currentDate = new Date()
+                const expirationDate = new Date(
+                    currentDate.setMonth(
+                        currentDate.getMonth() + subscriptionPeriodInMonths
+                    )
+                )
+
+                const updatedUser = await UserLogin.findOneAndUpdate(
+                    { email: email },
+                    {
+                        is_subscribed: true,
+                        subscription_type: subscriptionType,
+                        subscription_expiration_date: expirationDate,
+                    },
+                    { new: true }
+                )
+
+                if (updatedUser) {
+                    console.log('User subscription updated successfully')
+                    return res.status(200).send(`
+                        <script>
+                            window.close();
+                        </script>
+                    `)
+                } else {
+                    console.log('User not found or update failed')
+                    return res
+                        .status(404)
+                        .json({ error: 'User not found or update failed' })
+                }
             } else {
-                console.log('User not found or update failed')
+                console.log('Invalid subscription type or amount')
                 return res
-                    .status(404)
-                    .json({ error: 'User not found or update failed' })
+                    .status(400)
+                    .json({ error: 'Invalid subscription type or amount' })
             }
         } else if (paymentStatus === 'FAILED') {
             // Payment failed
