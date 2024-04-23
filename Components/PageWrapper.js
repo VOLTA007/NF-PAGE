@@ -11,7 +11,7 @@ import NavbarDesktop from '@/Components/NavbarDesktop'
 import Innernav from './Innernav'
 
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children, session }) => {
     const [isMobile, setIsMobile] = useState(null)
     const [isactive, setIsactive] = useState(false)
     const pathname = usePathname()
@@ -84,7 +84,7 @@ const PageWrapper = ({ children }) => {
     return (
         <>
             <NextUIProvider>
-                <SessionProvider>
+                <SessionProvider session={session}>
                     <AnimatePresence mode="wait">
                         <motion.div key={pathname}>
                             <div
@@ -107,7 +107,7 @@ const PageWrapper = ({ children }) => {
                                             initial="closed"
                                         >
                                             <AnimatePresence>
-                                                {isactive &&<Innernav />}
+                                                {isactive && <Innernav />}
                                             </AnimatePresence>
                                         </motion.div>
                                     </div>

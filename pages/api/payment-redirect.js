@@ -1,36 +1,29 @@
 import dbConnectLogin from '@/utils/dbConnectLogin'
 import UserLogin from '@/models/UserLogin'
-import { getSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from './auth/[...nextauth]'
 
 dbConnectLogin()
 
 export default async function handler(req, res) {
-    const session = await getSession({ req })
+    const session = await getServerSession(req, res, authOptions)
 
     try {
-        const email = session?.user?.email
         const { paymentStatus } = req.query
+        console.log(session)
+        const email = session?.user?.email
 
         if (paymentStatus === 'SUCCESS') {
             // Payment successful, update user subscription
-            const filter = { email: email }
-
             const updatedUser = await UserLogin.findOneAndUpdate(
-                filter,
+                { email: email },
                 { is_subscribed: true },
                 { new: true }
             )
 
             if (updatedUser) {
                 console.log('User subscription updated successfully')
-
-                // Close the current tab using JavaScript
-                return res.status(200).send(`
-                    <script>
-                        // Attempt to close the current tab
-                        window.close();
-                    </script>
-                `)
+                return res.status(200).json({ message: 'Payment successful' })
             } else {
                 console.log('User not found or update failed')
                 return res
