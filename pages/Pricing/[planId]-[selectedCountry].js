@@ -1,8 +1,10 @@
 import PayPage from '@/Components/PayPage'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 const PricingPlanCountry = () => {
+    const { data: session } = useSession()
     const router = useRouter()
     const { planId, selectedCountry } = router.query
 
@@ -20,6 +22,10 @@ const PricingPlanCountry = () => {
             USD: 300,
         },
     }
+
+    
+
+    
 
     const [amounta, setAmounta] = useState(null)
 
