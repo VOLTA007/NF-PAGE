@@ -8,8 +8,7 @@ const PayPage = ({ amount, currency }) => {
 
  
 
-    const { data: session } = useSession()
-    const userEmail = session.user.email
+
 
     const { baseUrl } = config
     const configObj = config[config.mode]
@@ -24,7 +23,7 @@ const PayPage = ({ amount, currency }) => {
         secret: configObj.PaymentApiKey,
         baseUrl: configObj.baseUrl,
         metaData: JSON.stringify({
-            'Cutomer Email': `${userEmail}`,
+            'Cutomer Email': ``,
         }),
         merchantRedirect: `${domain}/payment-redirect`,
         display: 'en',
