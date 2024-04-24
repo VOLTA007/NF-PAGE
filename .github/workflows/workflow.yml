@@ -1,10 +1,19 @@
-name: GitHub Actions
+name: GitHub Actions - Hit API on Schedule
 
 on:
   schedule:
-    - cron: '* * * * *' 
+    - cron: '* * * * *'  # Runs every minute (for testing purposes) 
+                         # You can adjust this to your desired schedule
 
 jobs:
-  explore_github_actions:
+  hit_api:
     runs-on: ubuntu-latest
-    
+    steps:
+      - uses: actions/checkout@v3  # Checkout your code
+
+      - name: Use Curl to hit API
+        run: |
+          curl --request POST \
+               https://nfpage.vercel.app/api/subscriptionChecker \
+               # Add any additional options or data to the request here, if needed
+
