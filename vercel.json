@@ -2,7 +2,7 @@
     "crons": [
         {
             "path": "/api/subscriptionChecker",
-            "schedule": "12 * * * *"
+            "schedule": "13 * * * *"
         }
     ]
 }
