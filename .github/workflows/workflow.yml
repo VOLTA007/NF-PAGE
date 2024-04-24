@@ -2,7 +2,7 @@ name: GitHub Actions
 
 on:
   schedule:
-    - cron: '1 * * * *' 
+    - cron: '* * * * *' 
 
 jobs:
   explore_github_actions:
