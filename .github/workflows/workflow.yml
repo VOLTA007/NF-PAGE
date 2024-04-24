@@ -1,14 +1,15 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: GitHub Actions
+
 on:
   schedule:
     - cron: '* * * * *'  # Run every minute
+
 jobs:
-  Explore-GitHub-Actions:
+  explore_github_actions:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Make HTTP request to API endpoint
-        uses: actions/checkout@v4
-        with:
-          args: |
-            POST https://nfpage.vercel.app/api/subscriptionChecker
+        run: |
+          # Use curl to trigger the API endpoint
+          curl -X POST https://nfpage.vercel.app/api/subscriptionChecker
