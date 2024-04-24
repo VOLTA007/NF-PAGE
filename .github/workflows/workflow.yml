@@ -8,8 +8,3 @@ jobs:
   explore_github_actions:
     runs-on: ubuntu-latest
     
-    steps:
-      - name: Make HTTP request to API endpoint
-        run: |
-          # Use curl to trigger the API endpoint
-          curl -X POST https://nfpage.vercel.app/api/subscriptionChecker
