@@ -2,14 +2,13 @@ name: GitHub Actions - Hit API on Schedule
 
 on:
   schedule:
-    - cron: '* * * * *'  # Runs every minute (for testing purposes) 
-                         # You can adjust this to your desired schedule
+    - cron: '* * * * *' 
 
 jobs:
   hit_api:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  # Checkout your code
+      - uses: actions/checkout@v4  
 
       - name: Use Curl to hit API
         run: |
