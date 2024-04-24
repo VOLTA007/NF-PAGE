@@ -1,18 +1,29 @@
 const http = require('http')
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
-const  UserLogin = require('../models/UserLogin') // Assuming UserLogin model is exported correctly
+const cors = require('cors') // Import CORS module
+// const socketIo = require('socket.io');
 
 const app = express()
 const server = http.createServer(app)
+
+// Enable CORS for all routes (adjust if needed)
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        credentials: true,
+        optionsSuccessStatus: 204,
+    },
+})
 
 app.use(cors())
 
 // Connect to MongoDB (replace with your connection string)
 mongoose
     .connect(
-        'mongodb+srv://volta0007:X5913lock1@cluster0.l8jlgt1.mongodb.net/UserLogin')
+        'mongodb+srv://volta0007:X5913lock1@cluster0.l8jlgt1.mongodb.net/UserLogin'
+    )
     .then(() => {
         console.log('Connected to MongoDB')
     })
@@ -20,38 +31,21 @@ mongoose
         console.error('MongoDB connection error:', err)
     })
 
-// Function to update subscriptions that have expired
-async function updateExpiredSubscriptions() {
-    console.log('Running subscription update task...')
-    try {
-        const currentDate = new Date()
-        const result = await UserLogin.updateMany(
-            {
-                subscription_expiration_date: { $lte: currentDate },
-                is_subscribed: true,
-            },
-            {
-                $set: {
-                    is_subscribed: false,
-                    subscription_expiration_date: null,
-                },
-            }
-        )
-        console.log(`${result.nModified} subscriptions updated.`)
-    } catch (error) {
-        console.error('Error updating subscriptions:', error)
-    }
-}
+// Get the UserLogin model (replace with your model path)
+const UserLogin = require('../models/UserLogin')
 
-// Schedule the function to run every 1 second (for testing)
-const intervalInMilliseconds = 5000 // 1 second
-setInterval(() => {
-    console.log('Interval task running...')
-    updateExpiredSubscriptions()
-}, intervalInMilliseconds)
+// Listen for changes in the MongoDB UserLogin collection
+const changeStream = UserLogin.watch()
+
+changeStream.on('change', (change) => {
+    console.log('Emitting dataUpdate event with change:', change)
+    // Push updated data to clients
+    io.emit('dataUpdate', change)
+})
 
 // Start the server
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001 // Use environment variable or default to 3001
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
+

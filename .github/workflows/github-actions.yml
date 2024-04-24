@@ -1,0 +1,15 @@
+name: GitHub Actions Demo
+
+on:
+  schedule:
+    - cron: '* * * * *'  # Run every minute
+
+jobs:
+  run_subscription_checker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Make HTTP request to API endpoint
+        run: |
+          # Use curl to trigger the API endpoint
+          curl -X POST https://nfpage.vercel.app/api/subscriptionChecker
