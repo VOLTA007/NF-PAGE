@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import PageWrapper from '@/Components/PageWrapper'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App({ Component, pageProps }) {
     const router = useRouter()
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
     return (
         <PageWrapper>
             <Component {...pageProps} />
+            <Analytics />
         </PageWrapper>
     )
 }
