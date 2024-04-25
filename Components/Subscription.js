@@ -3,6 +3,8 @@ import { io } from 'socket.io-client'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import Toggler from './Toggler'
+import { useRecoilValue } from 'recoil'
+import { isMobileState } from '../utils/recoilState'
 
 const Subscription = () => {
     const { data: session, status } = useSession()
@@ -11,6 +13,8 @@ const Subscription = () => {
     const [isSubstype, setSubstype] = useState(null)
     const [isSubexp, setSubexp] = useState(null)
     const [isusername, setusername] = useState(null)
+    const isMobile = useRecoilValue(isMobileState)
+
 
     useEffect(() => {
         const fetchSubs = async () => {
@@ -69,8 +73,9 @@ const Subscription = () => {
 
     return (
         <>
-        <div style={{paddingTop:'20px'}}></div>
-            <Toggler />
+            <div style={{ paddingTop: '20px' }}></div>
+            {isMobile && <Toggler />}
+
             {isAuthenticated && (
                 <>
                     {isSubscribed ? (

@@ -9,12 +9,15 @@ import Header from '@/Components/Header'
 import NavBar2 from '@/Components/NavBar2'
 import NavbarDesktop from '@/Components/NavbarDesktop'
 import Innernav from './Innernav'
-import Toggler from './Toggler'
+
+import { useRecoilState } from 'recoil'
+import { isMobileState } from '../utils/recoilState'
+
 
 
 
 const PageWrapper = ({ children, session }) => {
-    const [isMobile, setIsMobile] = useState(null)
+    const [isMobile, setIsMobile] = useRecoilState(isMobileState)
     const [isactive, setIsactive] = useState(false)
     const pathname = usePathname()
 

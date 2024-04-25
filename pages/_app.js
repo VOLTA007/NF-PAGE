@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import PageWrapper from '@/Components/PageWrapper'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { RecoilRoot } from 'recoil'
 
 export default function App({ Component, pageProps }) {
     const router = useRouter()
@@ -16,10 +17,12 @@ export default function App({ Component, pageProps }) {
     }, [])
 
     return (
-        <PageWrapper>
-            <Component {...pageProps} />
-            <SpeedInsights />
-            <Analytics />
-        </PageWrapper>
+        <RecoilRoot>
+            <PageWrapper>
+                <Component {...pageProps} />
+                <SpeedInsights />
+                <Analytics />
+            </PageWrapper>
+        </RecoilRoot>
     )
 }
