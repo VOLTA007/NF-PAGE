@@ -39,9 +39,6 @@ const PricingPlanCountry = () => {
         }
     }, [planId, selectedCountry])
 
-    if (!planId || !selectedCountry) {
-        return <div></div>
-    }
 
     return (
         <>
