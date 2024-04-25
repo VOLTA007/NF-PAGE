@@ -34,7 +34,7 @@
 
 
 .notification {
-  position: fixed;
+  position: absolute;
   overflow: hidden;
   visibility: hidden;
   top: -100px;
