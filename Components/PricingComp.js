@@ -9,10 +9,13 @@ import {
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { RadioGroup, Radio } from '@nextui-org/react'
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 
 
 export const PricingComp = () => {
+    const { data: session, status } = useSession()
     const [isclicked, setisclicked] = useState(null)
     const [istrue, setistrue] = useState(false)
     const [selectedCountry, setSelectedCountry] = useState('')
@@ -160,7 +163,6 @@ export const PricingComp = () => {
                 </div>
             </div>
 
-
             {istrue ? (
                 isclicked === 'ok' ? (
                     <motion.div
@@ -179,7 +181,7 @@ export const PricingComp = () => {
                             {/* Close button */}
                             <button
                                 className="absolute top-4 right-4 text-white cursor-pointer"
-                                onClick={() => setisclicked('wrong')} // Example: Navigate back to home page
+                                onClick={() => setisclicked('wrong')}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -197,35 +199,49 @@ export const PricingComp = () => {
                                 </svg>
                             </button>
 
-                            <div className="flex flex-col items-center">
-                                <RadioGroup
-                                    label="Select Your Country"
-                                    value={selectedCountry}
-                                    onChange={(e) =>
-                                        handleCountrySelection(e.target.value)
-                                    }
-                                    className="mb-2"
-                                >
-                                    <div className="pb-3"></div>
-                                    <label style={{ color: 'white' }}>
-                                        <Radio value="EGP" />
-                                        Egypt [EGP]
-                                    </label>
-                                    <div className="pb-3"></div>
-                                    <label style={{ color: 'white' }}>
-                                        <Radio value="USD" />
-                                        Other Country [USD]
-                                    </label>
-                                </RadioGroup>
-                            </div>
+                            {/* Render different content based on authentication status */}
+                            {status === 'authenticated' ? (
+                                // User is authenticated, render content for country selection
+                                <div className="flex flex-col items-center">
+                                    <RadioGroup
+                                        label="Select Your Country"
+                                        value={selectedCountry}
+                                        onChange={(e) =>
+                                            handleCountrySelection(
+                                                e.target.value
+                                            )
+                                        }
+                                        className="mb-2"
+                                    >
+                                        {/* Options for authenticated user */}
+                                        <div className="pb-3"></div>
+                                        <label style={{ color: 'white' }}>
+                                            <Radio value="EGP" />
+                                            Egypt [EGP]
+                                        </label>
+                                        <div className="pb-3"></div>
+                                        <label style={{ color: 'white' }}>
+                                            <Radio value="USD" />
+                                            Other Country [USD]
+                                        </label>
+                                    </RadioGroup>
 
-                            <button
-                                className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                                onClick={handleContinue}
-                                disabled={!selectedCountry} // Disable button if no country is selected
-                            >
-                                Continue
-                            </button>
+                                    <button
+                                        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                                        onClick={handleContinue}
+                                        disabled={!selectedCountry} // Disable button if no country is selected
+                                    >
+                                        Continue
+                                    </button>
+                                </div>
+                            ) : (
+                                // User is not authenticated, show login prompt
+                                <p className="text-white underline">
+                                    <Link href="/Academy/Login">
+                                        Please Login First
+                                    </Link>
+                                </p>
+                            )}
                         </div>
                     </motion.div>
                 ) : isclicked === 'wrong' ? (
@@ -270,9 +286,7 @@ export const PricingComp = () => {
                         </div>
                     </motion.div>
                 ) : (
-                    // This part will render if isclicked is neither 'ok' nor 'wrong'
-                    // You can customize this part as needed
-                    <div>{/* Add your fallback content here */}</div>
+                    <div></div>
                 )
             ) : null}
         </>
