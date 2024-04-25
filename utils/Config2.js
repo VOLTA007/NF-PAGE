@@ -1,5 +1,5 @@
 module.exports = {
-    mode: 'test',
+    mode: 'live',
     live: {
         baseUrl: 'https://checkout.kashier.io',
         mode: 'live',
