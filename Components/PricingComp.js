@@ -11,28 +11,55 @@ import { motion } from 'framer-motion'
 import { RadioGroup, Radio } from '@nextui-org/react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useRecoilValue } from 'recoil'
-import { isSubscribedState } from '../utils/recoilstate2'
+import { io } from 'socket.io-client'
+import axios from 'axios'
+
 
 export const PricingComp = () => {
     const { data: session, status } = useSession()
+    const isAuthenticated = status === 'authenticated'
     const [isclicked, setisclicked] = useState(null)
     const [istrue, setistrue] = useState(false)
     const [selectedCountry, setSelectedCountry] = useState('')
     const [selectedPlan, setSelectedPlan] = useState(null)
     const router = useRouter()
-    const isSubscribed = useRecoilValue(isSubscribedState)
 
-    const [subtrue, setsubtrue] = useState(true)
+    const [subtrue, setSubtrue] = useState(null)
+
 
     useEffect(() => {
-        if (isSubscribed) {
-            setsubtrue(false)
-        } else {
-            setsubtrue(true)
-        }
-    }, [status]) 
+        const fetchSubs = async () => {
+            try {
+                if (status === 'authenticated') {
+                    const response = await axios.get(
+                        `/api/subs?email=${session?.user?.email}`
+                    )
+                    const { is_subscribed } = response.data
 
+                    setSubtrue(is_subscribed)
+                }
+            } catch (error) {
+                console.error('Error fetching subs:', error)
+            }
+        }
+
+        const socket = io('http://localhost:3001')
+
+        // Listen for data updates from the server
+        socket.on('dataUpdate', () => {
+            fetchSubs() // Call fetchSubs when data updates are received
+        })
+
+        // Initial fetch when isAuthenticated or session.user.email changes
+        if (isAuthenticated) {
+            fetchSubs()
+        }
+
+        // Clean up socket connection when component unmounts
+        return () => {
+            socket.disconnect()
+        }
+    }, [isAuthenticated, session?.user?.email])
 
     const handleCountrySelection = (countryCode) => {
         setSelectedCountry(countryCode)
@@ -66,6 +93,16 @@ export const PricingComp = () => {
         <>
             <div style={{ paddingTop: '40px' }}></div>
             {subtrue ? (
+                <>
+                    <div className="flex items-center justify-center">
+                        You are Subscribed !
+                    </div>
+                    <div
+                        className="h-screen"
+                        style={{ height: 'calc(100vh - 360px)' }}
+                    ></div>
+                </>
+            ) : (
                 <>
                     <div className="flex justify-center items-center">
                         <nav
@@ -311,16 +348,6 @@ export const PricingComp = () => {
                             <div></div>
                         )
                     ) : null}
-                </>
-            ) : (
-                <>
-                    <div className="flex items-center justify-center">
-                        You are Subscribed !
-                    </div>
-                    <div
-                        className="h-screen"
-                        style={{ height: 'calc(100vh - 360px)' }}
-                    ></div>
                 </>
             )}
         </>
