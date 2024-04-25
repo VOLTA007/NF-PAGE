@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Toggler from './Toggler'
 
 export default function Footer() {
 
@@ -46,6 +47,9 @@ export default function Footer() {
                             </Link>
                         </li>
                     </ul>
+                </div>
+                <div className='hidden'>
+                    <Toggler />
                 </div>
             </footer>
             <div className="pb-4"></div>
