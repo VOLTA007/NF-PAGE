@@ -2,13 +2,10 @@ import React from 'react'
 import { generateKashierOrderHash } from '@/utils/generateKashierOrderHash'
 import config from '@/utils/Config2'
 import domain from '@/utils/Config'
-import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const PayPage = ({ amount, currency }) => {
-
- 
-
-
+    const router = useRouter()
 
     const { baseUrl } = config
     const configObj = config[config.mode]
@@ -33,6 +30,17 @@ const PayPage = ({ amount, currency }) => {
         brandColor: 'rgba(163, 0, 0, 1)',
     }
 
+    const handleDivClick = (event) => {
+        event.preventDefault()
+
+        // Navigate to /Academy/Profile
+        router.push('/Academy/Profile')
+
+        // Open hppUrl in a new tab
+        window.open(hppUrl, '_blank')
+    }
+
+
     order.hash = generateKashierOrderHash(order)
 
     const hppUrl =
@@ -54,7 +62,7 @@ const PayPage = ({ amount, currency }) => {
         `&mode=${configObj.mode}`
 
     return (
-        <div>
+        <div onClick={handleDivClick}>
             <a
                 className="bg-red-500"
                 href={hppUrl}
