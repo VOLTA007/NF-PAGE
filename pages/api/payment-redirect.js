@@ -87,10 +87,17 @@ export default async function handler(req, res) {
                     .status(400)
                     .json({ error: 'Invalid subscription type or amount' })
             }
-        } else if (paymentStatus === 'FAILED') {
-            // Payment failed
-            console.log('Payment failed')
-            return res.status(200).json({ message: 'Payment failed' })
+        } else if (
+            paymentStatus === 'FAILED' ||
+            paymentStatus === 'CANCELLED'
+        ) {
+            // Payment failed or cancelled
+            console.log('Payment failed or cancelled')
+            return res.status(200).send(`
+                <script>
+                    window.close();
+                </script>
+            `)
         } else {
             // Invalid payment status
             console.log('Invalid payment status')
