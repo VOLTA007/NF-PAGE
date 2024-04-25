@@ -20,7 +20,7 @@ export default function Signup() {
 
     useEffect(() => {
         if (status === 'authenticated') {
-            router.push('/Home')
+            router.push('/Academy/Home')
         }
     }, [status, router])
 
