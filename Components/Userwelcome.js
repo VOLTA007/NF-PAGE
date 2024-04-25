@@ -93,13 +93,9 @@ const UserWelcome = () => {
                             </p>
                         </div>
 
-                        {status === 'authenticated' && ( // Check if status is 'authenticated'
-                            <div>
-                                <button onClick={handleClick}>
-                                    My Profile
-                                </button>
-                            </div>
-                        )}
+                        <div>
+                            <button onClick={handleClick}>My Profile</button>
+                        </div>
                     </div>
                 </div>
             </>
