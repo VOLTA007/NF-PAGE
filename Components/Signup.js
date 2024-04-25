@@ -45,7 +45,7 @@ export default function Signup() {
 
             setTimeout(() => {
                 setNotificationVisible(false)
-                router.push('/Login')
+                router.push('/Academy/Login')
             }, 5000)
         } catch (error) {
             if (error.response && error.response.status === 400) {
