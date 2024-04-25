@@ -107,7 +107,7 @@ export default function Signup() {
                 onSubmit={handleFormSubmit}
                 className="mx-auto max-w-[400px] w-[350px] h-[420px] bg-[#edfb14] rounded-xl grid grid-rows-4 mt-[100px] m-8 p-5 gap-6"
             >
-                <h1 className="place-self-center text-center">
+                <h1 className="place-self-center text-center dark:text-black">
                     Sign Up{' '}
                     <span className="flex items-center justify-center">
                         <img
@@ -215,7 +215,7 @@ export default function Signup() {
                 </div>
 
                 <div>
-                    <p>
+                    <p className="dark:text-black">
                         Already Have an account?{' '}
                         <Link
                             className="underline"
