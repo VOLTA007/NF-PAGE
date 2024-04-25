@@ -18,8 +18,8 @@ export default function App({ Component, pageProps }) {
     return (
         <PageWrapper>
             <Component {...pageProps} />
-            <Analytics />
             <SpeedInsights />
+            <Analytics />
         </PageWrapper>
     )
 }
