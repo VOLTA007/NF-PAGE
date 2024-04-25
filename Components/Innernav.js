@@ -103,6 +103,14 @@ const Innernav = () => {
                     </div>
                 ))}
             </div>
+            <motion.div
+                variants={tog}
+                animate="enter"
+                exit="exit"
+                initial="initial"
+            >
+                <Toggler />
+            </motion.div>
         </div>
     )
 }
