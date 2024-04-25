@@ -9,15 +9,15 @@ const PricingPlanCountry = () => {
     const priceMapping = {
         beginner: {
             EGP: 400,
-            USD: 100,
+            USD: 50,
         },
         advanced: {
             EGP: 600,
-            USD: 200,
+            USD: 100,
         },
         premium: {
             EGP: 999,
-            USD: 300,
+            USD: 150,
         },
     }
 
