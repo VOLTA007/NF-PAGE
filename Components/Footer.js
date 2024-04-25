@@ -11,6 +11,7 @@ export default function Footer() {
                         <Link
                             href="/Academy/Home"
                             className="hover:underline text-center"
+                            scroll={false}
                         >
                             NutriFit™
                         </Link>
@@ -21,6 +22,7 @@ export default function Footer() {
                             <Link
                                 href="/Academy/About"
                                 className="hover:underline me-4 md:me-6"
+                                scroll={false}
                             >
                                 About us
                             </Link>
@@ -29,6 +31,7 @@ export default function Footer() {
                             <Link
                                 href="/Academy/Login"
                                 className="hover:underline me-4 md:me-6"
+                                scroll={false}
                             >
                                 Login/Signup
                             </Link>
@@ -37,6 +40,7 @@ export default function Footer() {
                             <Link
                                 href="/Academy/Pricing"
                                 className="hover:underline me-4 md:me-6"
+                                scroll={false}
                             >
                                 Pricing
                             </Link>

@@ -217,7 +217,11 @@ export default function Signup() {
                 <div>
                     <p>
                         Already Have an account?{' '}
-                        <Link className="underline" href="/Academy/Login">
+                        <Link
+                            className="underline"
+                            href="/Academy/Login"
+                            scroll={false}
+                        >
                             Login
                         </Link>
                     </p>

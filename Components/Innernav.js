@@ -59,7 +59,11 @@ const Innernav = () => {
                         >
                             {/* Render link as a regular anchor or Next.js Link */}
                             {link.onClick ? (
-                                <Link href={link.href} onClick={link.onClick}>
+                                <Link
+                                    href={link.href}
+                                    onClick={link.onClick}
+                                    scroll={false}
+                                >
                                     {link.title}
                                 </Link>
                             ) : (

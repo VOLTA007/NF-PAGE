@@ -37,9 +37,15 @@ const NavbarDesktop = () => {
                         onClick={handleLogo}
                     />
                     <div className="flex justify-center items-center gap-10">
-                        <Link href="/Academy/Home">Home</Link>
-                        <Link href="/Academy/Pricing">Pricing</Link>
-                        <Link href="/Academy/About">About us</Link>
+                        <Link href="/Academy/Home" scroll={false}>
+                            Home
+                        </Link>
+                        <Link href="/Academy/Pricing" scroll={false}>
+                            Pricing
+                        </Link>
+                        <Link href="/Academy/About" scroll={false}>
+                            About us
+                        </Link>
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-8">
@@ -48,6 +54,7 @@ const NavbarDesktop = () => {
                             <Link
                                 className="bg-[hsl(63,96%,53%)] text-black p-1 rounded-sm"
                                 href="/Academy/Login"
+                                scroll={false}
                             >
                                 Login / Sign up
                             </Link>

@@ -116,6 +116,7 @@ export default function Login() {
                         <Link
                             href="/Academy/Home"
                             className={`dark:text-white underline`}
+                            scroll={false}
                         >
                             Home Page 🏠💪:D
                         </Link>
@@ -206,7 +207,11 @@ export default function Login() {
                     <div>
                         <p>
                             Create Account Here!{' '}
-                            <Link className="underline" href="/Academy/Signup">
+                            <Link
+                                className="underline"
+                                href="/Academy/Signup"
+                                scroll={false}
+                            >
                                 Signup
                             </Link>
                         </p>
