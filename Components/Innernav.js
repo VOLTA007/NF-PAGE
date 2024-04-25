@@ -2,7 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
-import Toggler from './Toggler'
 
 
 const Innernav = () => {
@@ -81,7 +80,6 @@ const Innernav = () => {
                             exit="exit"
                             initial="initial"
                         >
-                            {/* Render link as a regular anchor or Next.js Link */}
                             {link.onClick ? (
                                 <Link
                                     className="dark:text-black"
@@ -95,6 +93,7 @@ const Innernav = () => {
                                 <Link
                                     className="dark:text-black"
                                     href={link.href}
+                                    scroll={false}
                                 >
                                     {link.title}
                                 </Link>
@@ -103,14 +102,6 @@ const Innernav = () => {
                     </div>
                 ))}
             </div>
-            <motion.div
-                variants={tog}
-                animate="enter"
-                exit="exit"
-                initial="initial"
-            >
-                <Toggler />
-            </motion.div>
         </div>
     )
 }

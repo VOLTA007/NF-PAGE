@@ -9,6 +9,8 @@ import Header from '@/Components/Header'
 import NavBar2 from '@/Components/NavBar2'
 import NavbarDesktop from '@/Components/NavbarDesktop'
 import Innernav from './Innernav'
+import Toggler from './Toggler'
+
 
 
 const PageWrapper = ({ children, session }) => {

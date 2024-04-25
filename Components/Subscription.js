@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
+import Toggler from './Toggler'
 
 const Subscription = () => {
     const { data: session, status } = useSession()
@@ -68,6 +69,8 @@ const Subscription = () => {
 
     return (
         <>
+        <div style={{paddingTop:'20px'}}></div>
+            <Toggler />
             {isAuthenticated && (
                 <>
                     {isSubscribed ? (
