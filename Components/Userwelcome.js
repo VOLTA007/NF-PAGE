@@ -94,7 +94,7 @@ const UserWelcome = () => {
                         </div>
 
                         <div>
-                            <button onClick={handleClick}>My Profile</button>
+                            <button className='underline' onClick={handleClick}>My Profile</button>
                         </div>
                     </div>
                 </div>

@@ -7,10 +7,13 @@ import { useRecoilValue } from 'recoil'
 import { isMobileState } from '../utils/recoilState'
 import Link from 'next/link'
 
+import { useRecoilState } from 'recoil'
+import { isSubscribedState } from '../utils/recoilstate2'
+
 const Subscription = () => {
     const { data: session, status } = useSession()
     const isAuthenticated = status === 'authenticated'
-    const [isSubscribed, setIsSubscribed] = useState(null)
+    const [isSubscribed, setIsSubscribed] = useRecoilState(isSubscribedState)
     const [isSubstype, setSubstype] = useState(null)
     const [isSubexp, setSubexp] = useState(null)
     const [isusername, setusername] = useState(null)

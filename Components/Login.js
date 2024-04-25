@@ -114,11 +114,11 @@ export default function Login() {
                     <br></br>
                     <button>
                         <Link
-                            href="/Academy/Home"
+                            href="/Academy/Profile"
                             className={`dark:text-white underline`}
                             scroll={false}
                         >
-                            Home Page 🏠💪:D
+                            My Profile💪:D
                         </Link>
                     </button>
                 </div>
@@ -205,7 +205,7 @@ export default function Login() {
                     </div>
 
                     <div>
-                        <p className='dark:text-black'>
+                        <p className="dark:text-black">
                             Create Account Here!{' '}
                             <Link
                                 className="underline"
