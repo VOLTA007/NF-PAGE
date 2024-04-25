@@ -30,12 +30,12 @@ const Innernav = () => {
     const { data: session } = useSession() // Using next-auth's useSession hook
 
     const Links = [
-        { title: 'Home', href: '/Home' },
-        { title: 'About', href: '/About' },
-        { title: 'Pricing', href: '/Pricing' },
+        { title: 'Home', href: '/Academy/Home' },
+        { title: 'About', href: '/Academy/About' },
+        { title: 'Pricing', href: '/Academy/Pricing' },
         {
             title: session?.user ? 'Logout' : 'Login', // Check if user is authenticated
-            href: session?.user ? '#' : '/Login', // Use '#' for Logout when authenticated
+            href: session?.user ? '#' : '/Academy/Login', // Use '#' for Logout when authenticated
             onClick: () => {
                 if (session?.user) {
                     // If user is authenticated, perform sign out

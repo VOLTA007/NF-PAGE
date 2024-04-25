@@ -111,7 +111,7 @@ export default function Signup() {
                         Sign Up{' '}
                         <span className="flex items-center justify-center">
                             <img
-                                src="./icons8-sign-up-31.png"
+                                src="/icons8-sign-up-31.png"
                                 className="w-8 h-auto"
                             ></img>
                         </span>
@@ -213,16 +213,7 @@ export default function Signup() {
                             />
                         </div>
                     </div>
-
-                    {/* <div className={styles.inputcontainer}>
-                        <input 
-                            onChange={(e) => setPassword(e.target.value)}
-                            type="password" 
-                            value={password} 
-                            className={`${styles.input} rounded-md p-2 ${isLoading ? styles.disabled : ''}`}
-                            disabled={isLoading} />
-                        <img src="./padlock.png" className={styles.icon} style={{ maxHeight: '20px', maxWidth: '20px' }} alt="Password icon" />
-                    </div> */}
+                    
                     <div>
                         <p>
                             Already Have an account?{' '}

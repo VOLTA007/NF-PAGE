@@ -3,8 +3,11 @@ import styles from '../styles/NavbarDesktop.module.css'
 import Link from 'next/link'
 import Toggler from './Toggler'
 import { signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+
 
 const NavbarDesktop = () => {
+    const router = useRouter()
     const session = useSession()
     const [logOut, setlogOut] = useState(false)
     const status = session.status
@@ -16,6 +19,10 @@ const NavbarDesktop = () => {
         }, 2000)
     }
 
+    const handleLogo = () => {
+        router.push('/Academy/Home')
+    }
+    
     return (
         <>
             <div className={styles.header1}>
@@ -27,11 +34,12 @@ const NavbarDesktop = () => {
                         className={styles.Logo}
                         src="/Nutrifitlogo.jpg"
                         alt="Logo"
+                        onClick={handleLogo}
                     />
                     <div className="flex justify-center items-center gap-10">
-                        <Link href="/Home">Home</Link>
-                        <Link href="/Pricing">Pricing</Link>
-                        <Link href="/About">About us</Link>
+                        <Link href="/Academy/Home">Home</Link>
+                        <Link href="/Academy/Pricing">Pricing</Link>
+                        <Link href="/Academy/About">About us</Link>
                     </div>
                 </div>
                 <div className="flex justify-start items-center gap-8">
@@ -39,7 +47,7 @@ const NavbarDesktop = () => {
                         <>
                             <Link
                                 className="bg-[hsl(63,96%,53%)] text-black p-1 rounded-sm"
-                                href="/Login"
+                                href="/Academy/Login"
                             >
                                 Login / Sign up
                             </Link>

@@ -1,8 +1,16 @@
 import styles from '../styles/Header.module.css'
+import { useRouter } from 'next/router'
 
 
 
 function Header() {
+        const router = useRouter()
+
+     const handleLogo = () => {
+         router.push('/Academy/Home')
+     }
+
+
     return (
         <>
             <div className={styles.header1}>
@@ -15,6 +23,7 @@ function Header() {
                         className={styles.Logo}
                         src="/Nutrifitlogo.jpg"
                         alt="Logo"
+                        onClick={handleLogo}
                     />
                 </div>
             </nav>

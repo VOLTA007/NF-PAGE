@@ -32,7 +32,7 @@ export const PricingComp = () => {
 
             router.push(
                 {
-                    pathname: `/Pricing/${selectedPlan}-${selectedCountry}`,
+                    pathname: `/Academy/Pricing/${selectedPlan}-${selectedCountry}`,
                     query: queryParams,
                 },
                 undefined,

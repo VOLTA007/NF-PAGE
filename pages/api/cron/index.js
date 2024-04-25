@@ -18,6 +18,7 @@ export default async function handler(req, res) {
             {
                 $set: {
                     is_subscribed: false,
+                    subscription_type: null,
                     subscription_expiration_date: null,
                 },
             }

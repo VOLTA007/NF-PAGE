@@ -7,6 +7,8 @@ const Subscription = () => {
     const { data: session, status } = useSession()
     const isAuthenticated = status === 'authenticated'
     const [isSubscribed, setIsSubscribed] = useState(null)
+    const [isSubstype, setSubstype] = useState(null)
+    const [isSubexp, setSubexp] = useState(null)
 
     useEffect(() => {
         const fetchSubs = async () => {
@@ -15,8 +17,14 @@ const Subscription = () => {
                     const response = await axios.get(
                         `/api/subs?email=${session.user.email}`
                     )
-                    const { is_subscribed } = response.data
+                    const {
+                        is_subscribed,
+                        subscription_type,
+                        subscription_expiration_date,
+                    } = response.data
                     setIsSubscribed(is_subscribed)
+                    setSubstype(subscription_type)
+                    setSubexp(subscription_expiration_date)
                 }
             } catch (error) {
                 console.error('Error fetching subs:', error)
@@ -46,16 +54,35 @@ const Subscription = () => {
         return <div></div>
     }
 
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString)
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        })
+    }
+
     return (
         <>
             {isAuthenticated && (
                 <>
                     {isSubscribed ? (
-                        <div className="relative left-6">
-                            <div className="bg-green-400 rounded-sm p-2">
-                                Subscribed
+                        <>
+                            <div className="relative left-6">
+                                <div className="bg-green-400 rounded-sm p-2">
+                                    <p>Status: Subscribed</p>
+                                    <p style={{ marginTop: '8px' }}>
+                                        Sub Type: {isSubstype}
+                                    </p>
+                                    <p style={{ marginTop: '8px' }}>
+                                        Sub Expiration Date:{' '}
+                                        {isSubexp ? formatDate(isSubexp) : ''}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </>
                     ) : (
                         <div className="relative left-6">
                             <div className="bg-red-400 rounded-sm p-2">
@@ -66,9 +93,7 @@ const Subscription = () => {
                 </>
             )}
 
-            {!isAuthenticated && (
-                <div>{/* Content for unauthenticated users */}</div>
-            )}
+            {!isAuthenticated && <div></div>}
         </>
     )
 }

@@ -130,7 +130,7 @@ export default function Login() {
                         Login{' '}
                         <span className="flex items-center justify-center">
                             <img
-                                src="./icons8-login-90.png"
+                                src="/icons8-login-90.png"
                                 className="w-8 h-auto"
                             ></img>
                         </span>

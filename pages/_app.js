@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         // Check for the root path ('/') on initial server-side render
         if (router.asPath === '/') {
-            router.push('/Home') // Redirect to /Home on server-side (prevents client-side loop)
+            router.push('/Academy/Home') // Redirect to /Home on server-side (prevents client-side loop)
         }
     }, [])
 
