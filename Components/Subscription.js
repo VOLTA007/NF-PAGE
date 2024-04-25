@@ -42,7 +42,7 @@ const Subscription = () => {
         }
 
         // Connect to the WebSocket server
-        const socket = io('http://localhost:3001')
+        const socket = io('https://nfpage.vercel.app/')
 
         // Listen for data updates from the server
         socket.on('dataUpdate', () => {
