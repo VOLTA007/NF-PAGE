@@ -73,7 +73,7 @@ const Subscription = () => {
                     {isSubscribed ? (
                         <>
                             <div style={{ paddingTop: '20px' }}></div>
-                            <div className="w-screen pl-4 pr-4 ">
+                            <div className="lg:flex justify-center items-center pl-4 pr-4 ">
                                 <div className="bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden rounded-xl border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap lg:mx-[300px] mx-3 px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
                                     <div className="grid py-1 justify-start place-items-center mx-auto max-w-8xl">
                                         <div className="relative flex items-center">
