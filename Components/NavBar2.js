@@ -40,7 +40,7 @@ const NavBar2 = ({ isactive, setIsactive }) => {
                     <p>Close</p>
                 </div>
 
-                <div className="h-full w-full flex items-center justify-center">
+                <div className="h-full w-full flex items-center justify-center dark:text-black">
                     <p>Menu</p>
                 </div>
             </motion.div>

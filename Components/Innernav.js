@@ -2,6 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
+import Toggler from './Toggler'
+
 
 const Innernav = () => {
     const pers = {
@@ -24,6 +26,28 @@ const Innernav = () => {
             transition: { delay: 0.1 + i * 0.1 },
             translateY: 80,
             translateX: -20,
+        }),
+    }
+
+
+    const tog = {
+        initial: {
+            opacity: 0,
+            transition: { delay: 1.5},
+            rotateX: 90,
+            translateY: 80,
+            translateX: -20,
+        },
+        enter: ({
+            opacity: 1,
+            transition: { delay: 1 },
+            rotateX: 0,
+            translateY: 0,
+            translateX: 0,
+            ease: [0.215, 0.61, 0.355, 1],
+        }),
+        exit: ({
+            opacity: 0,
         }),
     }
 
@@ -60,6 +84,7 @@ const Innernav = () => {
                             {/* Render link as a regular anchor or Next.js Link */}
                             {link.onClick ? (
                                 <Link
+                                    className="dark:text-black"
                                     href={link.href}
                                     onClick={link.onClick}
                                     scroll={false}
@@ -67,12 +92,25 @@ const Innernav = () => {
                                     {link.title}
                                 </Link>
                             ) : (
-                                <Link href={link.href}>{link.title}</Link>
+                                <Link
+                                    className="dark:text-black"
+                                    href={link.href}
+                                >
+                                    {link.title}
+                                </Link>
                             )}
                         </motion.div>
                     </div>
                 ))}
             </div>
+            <motion.div
+                variants={tog}
+                animate="enter"
+                exit="exit"
+                initial="initial"
+            >
+                <Toggler />
+            </motion.div>
         </div>
     )
 }
