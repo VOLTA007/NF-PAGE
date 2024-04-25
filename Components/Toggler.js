@@ -26,14 +26,14 @@ const Toggler = () => {
         <div className="flex justify-end">
             <div
                 className="relative w-16 h-8 flex items-center 
-            bg-gray-400 dark:bg-teal-500 cursor-pointer 
+            bg-gray-400 dark:bg-slate-600 cursor-pointer 
             rounded-full p-1 mr-1.5"
                 onClick={() => setdarkMode(!darkMode)}
             >
                 <FaMoon className="text-black" size={18} />
 
                 <div
-                    className={`absolute bg-white dark:bg-slate-550 w-6 h-6 rounded-full shadow-md transition-transform duration-500 ${
+                    className={`absolute bg-white dark:bg-slate-550 w-6 h-6 rounded-full shadow-md transition-transform duration-300 ${
                         darkMode ? 'translate-x-0' : 'translate-x-8'
                     }`}
                 ></div>
