@@ -9,6 +9,7 @@ const Subscription = () => {
     const [isSubscribed, setIsSubscribed] = useState(null)
     const [isSubstype, setSubstype] = useState(null)
     const [isSubexp, setSubexp] = useState(null)
+    const [isusername, setusername] = useState(null)
 
     useEffect(() => {
         const fetchSubs = async () => {
@@ -21,10 +22,12 @@ const Subscription = () => {
                         is_subscribed,
                         subscription_type,
                         subscription_expiration_date,
+                        username,
                     } = response.data
                     setIsSubscribed(is_subscribed)
                     setSubstype(subscription_type)
                     setSubexp(subscription_expiration_date)
+                    setusername(username)
                 }
             } catch (error) {
                 console.error('Error fetching subs:', error)
@@ -54,7 +57,6 @@ const Subscription = () => {
         return <div></div>
     }
 
-
     const formatDate = (dateString) => {
         const date = new Date(dateString)
         return date.toLocaleDateString('en-US', {
@@ -70,9 +72,34 @@ const Subscription = () => {
                 <>
                     {isSubscribed ? (
                         <>
-                            <div className="relative left-6">
-                                <div className="bg-green-400 rounded-sm p-2">
-                                    <p>Status: Subscribed</p>
+                            <div style={{ paddingTop: '20px' }}></div>
+                            <div className="w-screen pl-4 pr-4">
+                                <div className="bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden rounded-xl border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap lg:mx-[300px] mx-3 px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
+                                    <div className="grid py-1 justify-start place-items-center mx-auto max-w-8xl">
+                                        <div className="relative flex items-center">
+                                            <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                                <svg
+                                                    className="absolute w-10 h-10 text-gray-400 -right-0 top-2"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                        clipRule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </div>
+                                            <p className="ml-3">{isusername}</p>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Status:{' '}
+                                        <span className="text-green-400">
+                                            Subscribed
+                                        </span>
+                                    </p>
                                     <p style={{ marginTop: '8px' }}>
                                         Sub Type: {isSubstype}
                                     </p>

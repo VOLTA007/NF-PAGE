@@ -11,6 +11,7 @@ export default async function handler(req, res) {
     try {
         const user = await UserLogin.findOne({ email });
         if (user) {
+            const { username } = user
             const { subscription_expiration_date } = user;
             const { subscription_type } = user;
             const { is_subscribed } = user;
@@ -18,6 +19,7 @@ export default async function handler(req, res) {
                 is_subscribed,
                 subscription_type,
                 subscription_expiration_date,
+                username,
             })
         } else {
           res.status(404).json({ error: 'User not found' });

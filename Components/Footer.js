@@ -9,7 +9,7 @@ export default function Footer() {
                     <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
                         © 2024{' '}
                         <Link
-                            href="/Home"
+                            href="/Academy/Home"
                             className="hover:underline text-center"
                         >
                             NutriFit™
@@ -19,7 +19,7 @@ export default function Footer() {
                     <ul className="flex flex-wrap justify-center items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                         <li>
                             <Link
-                                href="/About"
+                                href="/Academy/About"
                                 className="hover:underline me-4 md:me-6"
                             >
                                 About us
@@ -27,7 +27,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="Login"
+                                href="/Academy/Login"
                                 className="hover:underline me-4 md:me-6"
                             >
                                 Login/Signup
@@ -35,7 +35,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="/Pricing"
+                                href="/Academy/Pricing"
                                 className="hover:underline me-4 md:me-6"
                             >
                                 Pricing

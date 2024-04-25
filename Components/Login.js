@@ -114,7 +114,7 @@ export default function Login() {
                     <br></br>
                     <button>
                         <Link
-                            href="/Home"
+                            href="/Academy/Home"
                             className={`dark:text-white underline`}
                         >
                             Home Page 🏠💪:D
@@ -202,11 +202,11 @@ export default function Login() {
                             />
                         </div>
                     </div>
-                    
+
                     <div>
                         <p>
                             Create Account Here!{' '}
-                            <Link className="underline" href="/Signup">
+                            <Link className="underline" href="/Academy/Signup">
                                 Signup
                             </Link>
                         </p>
