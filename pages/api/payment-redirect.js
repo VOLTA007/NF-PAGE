@@ -6,16 +6,16 @@ import { authOptions } from './auth/[...nextauth]'
 // Pricing information based on subscription types and currency
 const pricing = {
     Beginner: {
-        EGP: 400, // 1 month period
-        USD: 100, // 1 month period
+        EGP: 400,
+        USD: 50,
     },
     Advanced: {
-        EGP: 600, // 3 month period
-        USD: 200, // 3 month period
+        EGP: 600,
+        USD: 100,
     },
     Premium: {
-        EGP: 999, // 6 month period
-        USD: 300, // 6 month period
+        EGP: 999,
+        USD: 150,
     },
 }
 
