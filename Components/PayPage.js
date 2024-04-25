@@ -10,7 +10,7 @@ const PayPage = ({ amount, currency }) => {
     const { baseUrl } = config
     const configObj = config[config.mode]
 
-    const formattedAmount = amount ? amount.toString() : '1.00'
+    const formattedAmount = amount ? amount.toString() : '400.00'
 
     const order = {
         amount: formattedAmount,
@@ -26,7 +26,7 @@ const PayPage = ({ amount, currency }) => {
         display: 'en',
         failureRedirect: 'true',
         redirectMethod: 'get',
-        allowedMethods: 'wallet,card',
+        allowedMethods: 'card,wallet,fawry',
         brandColor: 'rgba(163, 0, 0, 1)',
     }
 
@@ -64,7 +64,7 @@ const PayPage = ({ amount, currency }) => {
     return (
         <div onClick={handleDivClick}>
             <a
-                className="bg-red-500"
+                className="bg-red-500 rounded-sm px-2 py-2"
                 href={hppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
