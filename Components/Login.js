@@ -221,7 +221,7 @@ export default function Login() {
                         </p>
                     </div>
                     <button
-                        className={`${styles.but} bg-black text-white dark:text-black dark:bg-white ${
+                        className={`relative left-[50%] translate-x-[-50%] w-[100px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
                             isLoading ? styles.loading : ''
                         }`}
                         type="submit"
