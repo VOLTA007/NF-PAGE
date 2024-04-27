@@ -6,8 +6,12 @@ import { useRouter } from 'next/router'
 import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
+import { useRecoilValue } from 'recoil'
+import { isDarkS } from '../utils/recoilstate3'
+
 
 export default function Login() {
+    const isDark = useRecoilValue(isDarkS)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -125,14 +129,14 @@ export default function Login() {
             ) : (
                 <form
                     onSubmit={handleFormSubmit}
-                    className="mx-auto max-w-[400px] w-[350px] h-[400px] bg-[#edfb14] rounded-xl grid grid-rows-4 mt-[100px] m-8 p-5 gap-6"
+                    className="mx-auto max-w-[400px] w-[350px] h-[400px] bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap  px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms] rounded-xl grid grid-rows-4 mt-[50px] m-8 p-5 gap-6"
                 >
-                    <h1 className="place-self-center text-center dark:text-black">
+                    <h1 className="place-self-center text-center ">
                         Login{' '}
                         <span className="flex items-center justify-center">
                             <img
                                 src="/icons8-login-90.png"
-                                className="w-8 h-auto"
+                                className="w-8 h-auto dark:invert"
                             ></img>
                         </span>
                         Welcome To Nutrifit :)
@@ -205,10 +209,10 @@ export default function Login() {
                     </div>
 
                     <div>
-                        <p className="dark:text-black">
+                        <p className=" text-center">
                             Create Account Here!{' '}
                             <Link
-                                className="underline"
+                                className={isDark ? styles.btnn : styles.btnwhite}
                                 href="/Academy/Signup"
                                 scroll={false}
                             >
@@ -217,7 +221,7 @@ export default function Login() {
                         </p>
                     </div>
                     <button
-                        className={`${styles.but} ${
+                        className={`${styles.but} bg-black text-white dark:text-black dark:bg-white ${
                             isLoading ? styles.loading : ''
                         }`}
                         type="submit"
@@ -241,6 +245,7 @@ export default function Login() {
                     <div className={styles.bar}></div>
                 </div>
             )}
+            <div style={{ paddingTop: '20px' }}></div>
         </>
     )
 }

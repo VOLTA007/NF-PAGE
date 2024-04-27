@@ -2,11 +2,10 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  width: 100px;
   border: none;
   border-radius: 10px;
   padding: 10px;
-  background-color: hsl(0,0%,8%);
-  color: white;
   cursor: pointer;
   outline: none;
 }
@@ -88,6 +87,103 @@
   border-top-color: #fff;
   animation: an1 1s ease infinite;
 }
+
+
+
+.btnn {
+    padding: 5px 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btnwhite {
+    padding: 5px 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btnn {
+  border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    z-index: 1;
+    color: white;
+}
+
+.btnwhite {
+  border-radius: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    z-index: 1;
+    color: black;
+}
+
+.btnn:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    background: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.btnwhite:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    background: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.btnn:hover {
+    color: rgb(0, 0, 0);
+}
+
+.btnwhite:hover {
+    color: rgb(255, 255, 255);
+}
+
+.btnn:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.btnwhite:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.btnn:active {
+    top: 2px;
+}
+
+.btnwhite:active {
+    top: 2px;
+}
+
 
 @keyframes an1 {
   0% {

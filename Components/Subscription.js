@@ -261,13 +261,8 @@ const Subscription = () => {
                                     <p className="ml-3">{isusername}</p>
                                 </div>
                             </div>
-                            <p>
-                                <Link
-                                    className="underline"
-                                    href="/Academy/Login"
-                                >
-                                    Please Login{' '}
-                                </Link>
+                            <p className="flex justify-center items-center bg-[linear-gradient(_to_right,#0ba360,#3cba92,#30dd8a,#2bb673_)] shadow-[0_4px_15px_0_rgba(23,168,108,0.75)] w-40 text-base font-semibold text-white cursor-pointer h-[55px] text-center bg-[300%_100%] transition-all duration-[0.4s] ease-[ease-in-out] m-5 rounded-[50px] border-[none] hover:bg-[100%_0] hover:transition-all hover:duration-[0.4s] hover:ease-[ease-in-out]">
+                                <Link href="/Academy/Login">Please Login</Link>
                             </p>
                         </div>
                     </div>

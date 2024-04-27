@@ -1,15 +1,12 @@
 import styles from '../styles/Header.module.css'
 import { useRouter } from 'next/router'
 
-
-
 function Header() {
-        const router = useRouter()
+    const router = useRouter()
 
-     const handleLogo = () => {
-         router.push('/Academy/Home')
-     }
-
+    const handleLogo = () => {
+        router.push('/Academy/Home')
+    }
 
     return (
         <>
