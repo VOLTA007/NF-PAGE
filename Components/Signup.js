@@ -5,7 +5,8 @@ import domain from '@/utils/Config'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import PageWrapper from '@/Components/PageWrapper'
+import { useRecoilValue } from 'recoil'
+import { isDarkS } from '../utils/recoilstate3'
 
 export default function Signup() {
     const [email, setEmail] = useState('')
@@ -16,7 +17,10 @@ export default function Signup() {
     const [message, setMessage] = useState('')
     const router = useRouter()
     const session = useSession()
+    const isDark = useRecoilValue(isDarkS)
     const status = session.status
+
+    
 
     useEffect(() => {
         if (status === 'authenticated') {
@@ -105,14 +109,14 @@ export default function Signup() {
             </div>
             <form
                 onSubmit={handleFormSubmit}
-                className="mx-auto max-w-[400px] w-[350px] h-[420px] bg-[#edfb14] rounded-xl grid grid-rows-4 mt-[100px] m-8 p-5 gap-6"
+                className="mx-auto max-w-[400px] w-[350px] h-[400px] bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap  px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms] rounded-xl grid grid-rows-4 mt-[50px] m-8 p-5 gap-6"
             >
-                <h1 className="place-self-center text-center dark:text-black">
+                <h1 className="mt-2 place-self-center text-center dark:text-white">
                     Sign Up{' '}
                     <span className="flex items-center justify-center">
                         <img
                             src="/icons8-sign-up-31.png"
-                            className="w-8 h-auto"
+                            className="w-8 h-auto dark:invert"
                         ></img>
                     </span>
                     Welcome To Nutrifit :)
@@ -215,10 +219,10 @@ export default function Signup() {
                 </div>
 
                 <div>
-                    <p className="dark:text-black">
-                        Already Have an account?{' '}
+                    <p className=" text-center">
+                        Create Account Here!{' '}
                         <Link
-                            className="underline"
+                            className={isDark ? styles.btnn : styles.btnwhite}
                             href="/Academy/Login"
                             scroll={false}
                         >
@@ -227,7 +231,7 @@ export default function Signup() {
                     </p>
                 </div>
                 <button
-                    className={`${styles.but} ${
+                    className={`relative left-[50%] translate-x-[-50%] w-[100px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
                         isLoading ? styles.loading : ''
                     }`}
                     type="submit"

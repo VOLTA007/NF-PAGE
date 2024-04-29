@@ -131,7 +131,7 @@ export default function Login() {
                     onSubmit={handleFormSubmit}
                     className="mx-auto max-w-[400px] w-[350px] h-[400px] bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap  px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms] rounded-xl grid grid-rows-4 mt-[50px] m-8 p-5 gap-6"
                 >
-                    <h1 className="place-self-center text-center ">
+                    <h1 className="place-self-center text-center">
                         Login{' '}
                         <span className="flex items-center justify-center">
                             <img
