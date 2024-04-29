@@ -40,6 +40,9 @@ export default function Login() {
                 setMessage('Logged in Successfully')
                 setNotificationVisible(true)
                 setTimeout(async () => {
+                    router.push('/Academy/Profile')
+                }, 3900)
+                setTimeout(async () => {
                     setNotificationVisible(false)
                     await signIn('credentials', { email, password })
                 }, 4250)
