@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FaMoon } from 'react-icons/fa'
 import { BsSunFill } from 'react-icons/bs'
 import { useRecoilState } from 'recoil'
@@ -15,7 +15,7 @@ const Toggler = () => {
             '(prefers-color-scheme: dark)'
         ).matches
 
-        // Set dark mode state based on savedTheme and prefersDarkMode
+        // Determine initial dark mode state
         if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
             setDarkMode(true) // Enable dark mode
         } else {
@@ -23,20 +23,22 @@ const Toggler = () => {
         }
     }, [setDarkMode])
 
+    const toggleDarkMode = () => {
+        const newDarkMode = !darkMode
+        setDarkMode(newDarkMode) // Toggle dark mode state
+
+        // Update localStorage with the new theme preference
+        localStorage.setItem('theme', newDarkMode ? 'dark' : 'light')
+    }
+
     useEffect(() => {
         // Add or remove 'dark' class from <html> based on darkMode state
         if (darkMode) {
             document.documentElement.classList.add('dark')
-            localStorage.setItem('theme', 'dark')
         } else {
             document.documentElement.classList.remove('dark')
-            localStorage.setItem('theme', 'light')
         }
     }, [darkMode])
-
-    const toggleDarkMode = () => {
-        setDarkMode((prevDarkMode) => !prevDarkMode)
-    }
 
     return (
         <div className="flex justify-end mt-4 mr-4">
