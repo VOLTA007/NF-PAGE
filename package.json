@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@nextui-org/react": "^2.2.10",
+    "@nextui-org/react": "^2.3.6",
     "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^2.2.3",
     "@vercel/analytics": "^1.2.2",
