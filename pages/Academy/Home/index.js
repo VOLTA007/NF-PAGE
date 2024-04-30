@@ -7,19 +7,20 @@ import { Image } from '@nextui-org/react'
 export default function Home() {
     return (
         <>
-            <div className="bg-[#fffaf6] dark:bg-slate-800 w-fill h-[80vh] rounded-[30px] lg:mx-10 mt-4 mx-2">
+            <div className="bg-[#fffaf6] dark:bg-slate-800 w-fill h-fit rounded-[30px] lg:mx-10 mt-4 mx-2">
                 <Userwelcome />
+                <div style={{paddingBottom:'40px'}}></div>
 
-                <div className="grid grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0">
+                <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0 ">
                     <div className="flex justify-center ">
-                        <h1 className="text-7xl inter-unique slant-10">
+                        <h1 className="md:text-7xl text-3xl inter-unique slant-10">
                             IM Abdalrahman,<br></br> your Nutritionist
                         </h1>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex md:justify-center">
                         <Image
                             isBlurred
-                            width={410}
+                            width={310}
                             src="/Abdo.jpg"
                             alt="NextUI Album Cover"
                             className="m-5"
