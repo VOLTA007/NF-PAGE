@@ -50,7 +50,7 @@ export default function Home() {
                         </div>
                         <div className='flex justify-center items-center gap-4 md:mt-10 mt-10'>
                             <Button className='w-[180px] h-[50px]' color="success">Subscribe</Button>
-                            <Button className='bg-white text-black'>Testomnials</Button>
+                            <Button className='bg-white text-black'>Testimonials</Button>
                         </div>
                     </div>
                     <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6 ">
