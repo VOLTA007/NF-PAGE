@@ -50,7 +50,7 @@
   height: 6px;
   border-radius: 50px;
   width: 100%;
-  background-color: hsl(63,96%,53%);
+  background-color: hsl(63, 0%, 100%);
   animation: fillBar 5s ease forwards;
 }
 
@@ -67,15 +67,6 @@
   place-content: center;
 }
 
-.loader{
-  pointer-events: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #fff;
-  animation: an1 1s ease infinite;
-}
 
 
 
@@ -174,14 +165,6 @@
 }
 
 
-@keyframes an1 {
-  0% {
-    transform: rotate(0turn);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
-}
 
 
 @keyframes fillBar {

@@ -5,6 +5,7 @@ import domain from '@/utils/Config'
 import { useRouter } from 'next/router'
 import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { Spinner } from '@nextui-org/react'
 
 import { useRecoilValue } from 'recoil'
 import { isDarkS } from '../utils/recoilstate3'
@@ -215,7 +216,9 @@ export default function Login() {
                         <p className=" text-center">
                             Create Account Here!{' '}
                             <Link
-                                className={isDark ? styles.btnn : styles.btnwhite}
+                                className={
+                                    isDark ? styles.btnn : styles.btnwhite
+                                }
                                 href="/Academy/Signup"
                                 scroll={false}
                             >
@@ -224,17 +227,13 @@ export default function Login() {
                         </p>
                     </div>
                     <button
-                        className={`relative left-[50%] translate-x-[-50%] w-[100px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
+                        className={`relative left-[50%] translate-x-[-50%] w-[100px] h-[49px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
                             isLoading ? styles.loading : ''
                         }`}
                         type="submit"
                         disabled={isLoading}
                     >
-                        {isLoading ? (
-                            <div className={styles.loader}></div>
-                        ) : (
-                            'Login'
-                        )}
+                        {isLoading ? <Spinner color="default" /> : 'Login'}
                     </button>
                 </form>
             )}

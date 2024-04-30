@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRecoilValue } from 'recoil'
 import { isDarkS } from '../utils/recoilstate3'
+import { Spinner } from '@nextui-org/react'
 
 export default function Signup() {
     const [email, setEmail] = useState('')
@@ -231,17 +232,13 @@ export default function Signup() {
                     </p>
                 </div>
                 <button
-                    className={`relative left-[50%] translate-x-[-50%] w-[100px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
+                    className={`relative left-[50%] translate-x-[-50%] w-[100px] h-[49px] border-none rounded-lg p-[10px] cursor-pointer outline-none bg-black text-white dark:text-black dark:bg-white ${
                         isLoading ? styles.loading : ''
                     }`}
                     type="submit"
                     disabled={isLoading}
                 >
-                    {isLoading ? (
-                        <div className={styles.loader}></div>
-                    ) : (
-                        'Signup'
-                    )}
+                    {isLoading ? <Spinner color="default" /> : 'Signup'}
                 </button>
             </form>
             {notificationVisible && (
