@@ -23,7 +23,7 @@ export default function Home() {
                             isBlurred
                             width={310}
                             src="/Abdo.jpg"
-                            alt="NextUI Album Cover"
+                            alt="Doctor Image"
                             className="m-5"
                         />
                     </div>
