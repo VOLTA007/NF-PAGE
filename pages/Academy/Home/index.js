@@ -3,6 +3,7 @@ import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { Button } from '@nextui-org/react'
+import { Card, CardFooter } from '@nextui-org/react'
 
 export default function Home() {
     const [isMobileWidth, setIsMobileWidth] = useState(null)
@@ -49,15 +50,60 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="flex justify-center items-center gap-4 md:mt-10 mt-10">
-                            <Button
-                                className="w-[180px] h-[50px]"
-                                color="success"
+                            <Card
+                                isFooterBlurred
+                                radius="lg"
+                                className="border-none"
                             >
-                                Subscribe
-                            </Button>
-                            <Button className="dark:bg-white dark:text-black bg-black text-white">
-                                Testimonials
-                            </Button>
+                                <Image
+                                    alt="Woman listing to music "
+                                    className="object-cover dark:invert"
+                                    height={200}
+                                    src="/subscribe.gif"
+                                    width={200}
+                                />
+                                <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                                    <p className="text-tiny text-black dark:text-white ">
+                                        Choose Your Plan Now!
+                                    </p>
+                                    <Button
+                                        className="text-tiny bg-black/20 text-black dark:text-white "
+                                        variant="flat"
+                                        color="default"
+                                        radius="lg"
+                                        size="sm"
+                                    >
+                                        Subscribe
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                            <Card
+                                isFooterBlurred
+                                radius="lg"
+                                className="border-none"
+                            >
+                                <Image
+                                    alt="Woman listing to music"
+                                    className="object-cover dark:invert"
+                                    height={200}
+                                    src="/speech-bubble.gif"
+                                    width={200}
+                                />
+                                <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                                    <p className="text-tiny text-black dark:text-white ">
+                                        See Examples from our people
+                                    </p>
+                                    <Button
+                                        className="text-tiny bg-black/20 text-black  dark:text-white"
+                                        variant="flat"
+                                        color="default"
+                                        radius="lg"
+                                        size="sm"
+                                    >
+                                        Testimonial
+                                    </Button>
+                                </CardFooter>
+                            </Card>
                         </div>
                     </div>
                     <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6 ">
