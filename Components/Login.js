@@ -29,6 +29,21 @@ export default function Login() {
     async function handleFormSubmit(e) {
         e.preventDefault()
         setIsLoading(true)
+
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        if (!emailPattern.test(email)) {
+            setIsLoading(true)
+            setNotificationVisible(true)
+            setMessage('Please enter a valid email address.')
+            setTimeout(() => {
+                setNotificationVisible(false)
+                setIsLoading(false)
+            }, 5000)
+            return
+        }
+
+
         try {
             const response = await axios.post(`${domain}/UserLogin`, {
                 email,
@@ -121,9 +136,7 @@ export default function Login() {
                     </ol>
                 </nav>
             </div>
-            {status === 'authenticated' ? (
-                null
-            ) : (
+            {status === 'authenticated' ? null : (
                 <form
                     onSubmit={handleFormSubmit}
                     className="mx-auto max-w-[400px] w-[350px] h-[400px] bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap  px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms] rounded-xl grid grid-rows-4 mt-[50px] m-8 p-5 gap-6"
@@ -165,7 +178,6 @@ export default function Login() {
                                 placeholder="Name@email.com"
                                 onChange={(e) => setEmail(e.target.value)}
                                 value={email}
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                                 required
                             />
                         </div>

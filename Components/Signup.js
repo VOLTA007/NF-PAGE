@@ -33,6 +33,19 @@ export default function Signup() {
         e.preventDefault()
         setIsLoading(true)
 
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        if (!emailPattern.test(email)) {
+            setIsLoading(true)
+            setNotificationVisible(true)
+            setMessage('Please enter a valid email address.')
+            setTimeout(() => {
+                setNotificationVisible(false)
+                setIsLoading(false)
+            }, 5000)
+            return
+        }
+
+
         try {
             const response = await axios.post(`${domain}/UserSignup`, {
                 username,
@@ -179,7 +192,6 @@ export default function Signup() {
                             placeholder="Name@email.com"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
-                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                             required
                         />
                     </div>
