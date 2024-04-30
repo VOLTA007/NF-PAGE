@@ -12,9 +12,6 @@ module.exports = {
     darkMode: 'selector', // Use 'class' to enable dark mode via CSS class
     theme: {
         extend: {
-            fontFamily: {
-                inter: ['Inter', 'sans-serif'],
-            },
         },
     },
     plugins: [
