@@ -10,7 +10,7 @@ export default function Home() {
         <>
             <div className="bg-[#fffaf6] dark:bg-slate-800 w-fill h-fit rounded-[30px] lg:mx-10 mt-4 mx-2">
                 <Userwelcome />
-                <div style={{paddingBottom:'40px'}}></div>
+                <div style={{ paddingBottom: '40px' }}></div>
 
                 <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0 ">
                     <div className="flex justify-center ">
@@ -18,7 +18,7 @@ export default function Home() {
                             IM Abdalrahman,<br></br> your Nutritionist
                         </h1>
                     </div>
-                    <div className="flex md:justify-center">
+                    <div className="ml-1.5">
                         <Image
                             isBlurred
                             width={310}
