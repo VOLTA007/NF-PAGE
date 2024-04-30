@@ -18,7 +18,7 @@ export default function Home() {
                             IM Abdalrahman,<br></br> your Nutritionist
                         </h1>
                     </div>
-                    <div className=" flex justify-center mr-10">
+                    <div className=" flex justify-center mr-10 mt-6">
                         <Image
                             isBlurred
                             width={310}
