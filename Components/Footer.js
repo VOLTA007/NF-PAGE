@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import Toggler from './Toggler'
+import { useSession } from 'next-auth/react'
 
 export default function Footer() {
+        const session = useSession()
+        const status = session.status
 
     return (
         <>
@@ -28,15 +31,28 @@ export default function Footer() {
                                 About us
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                href="/Academy/Login"
-                                className="hover:underline me-4 md:me-6"
-                                scroll={false}
-                            >
-                                Login/Signup
-                            </Link>
-                        </li>
+                        {status === 'authenticated' ? (
+                            <li>
+                                <Link
+                                    href="/Academy/Profile"
+                                    className="hover:underline me-4 md:me-6"
+                                    scroll={false}
+                                >
+                                    My Profile
+                                </Link>
+                            </li>
+                        ) : (
+                            <li>
+                                <Link
+                                    href="/Academy/Login"
+                                    className="hover:underline me-4 md:me-6"
+                                    scroll={false}
+                                >
+                                    Login/Signup
+                                </Link>
+                            </li>
+                        )}
+
                         <li>
                             <Link
                                 href="/Academy/Pricing"
@@ -48,7 +64,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className='hidden'>
+                <div className="hidden">
                     <Toggler />
                 </div>
             </footer>
