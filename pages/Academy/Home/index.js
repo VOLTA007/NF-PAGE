@@ -29,7 +29,7 @@ export default function Home() {
                             your Nutritionist
                         </h1>
                     </div>
-                    <div className="flex justify-center mr- md:mt-0 mt-6">
+                    <div className="flex justify-center mr-10 md:mt-0 mt-6">
                         <Image
                             isBlurred
                             width={imageWidth} // Use the calculated imageWidth
