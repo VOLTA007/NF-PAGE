@@ -104,7 +104,7 @@ const PageWrapper = ({ children, session }) => {
                                 <>
                                     <div className="absolute top-[65px] right-[8px] z-40">
                                         <motion.div
-                                            className="bg-limee rounded-[25px] relative z-40"
+                                            className=" bg-slate-100 dark:bg-gray-900 rounded-[25px] relative z-40"
                                             variants={variants}
                                             animate={
                                                 isactive ? 'open' : 'closed'

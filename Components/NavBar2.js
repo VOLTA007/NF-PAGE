@@ -30,7 +30,7 @@ const NavBar2 = ({ isactive, setIsactive }) => {
         <>
             <div
                 onClick={() => setIsactive(!isactive)}
-                className="absolute top-[65px] right-2 uppercase h-[40px] w-[100px] bg-limee rounded-[25px] cursor-pointer overflow-hidden z-40"
+                className="absolute top-[65px] right-2 uppercase h-[40px] w-[100px] bg-slate-100 dark:bg-gray-900  rounded-[25px] cursor-pointer overflow-hidden z-40"
             >
                 <motion.div
                     ref={sideMenuRef}
@@ -42,7 +42,7 @@ const NavBar2 = ({ isactive, setIsactive }) => {
                         <p>Close</p>
                     </div>
 
-                    <div className=" text-black h-full w-full flex items-center justify-center dark:text-black">
+                    <div className=" text-black h-full w-full flex items-center justify-center dark:text-white">
                         <p>Menu</p>
                     </div>
                 </motion.div>

@@ -82,7 +82,7 @@ const Innernav = () => {
                         >
                             {link.onClick ? (
                                 <Link
-                                    className="dark:text-black"
+                                    className="dark:text-white"
                                     href={link.href}
                                     onClick={link.onClick}
                                     scroll={false}
@@ -91,7 +91,7 @@ const Innernav = () => {
                                 </Link>
                             ) : (
                                 <Link
-                                    className="dark:text-black"
+                                    className="dark:text-white"
                                     href={link.href}
                                     scroll={false}
                                 >
