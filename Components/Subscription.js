@@ -9,8 +9,6 @@ import Link from 'next/link'
 import { Button } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 
-
-
 const Subscription = () => {
     const router = useRouter()
     const { data: session, status } = useSession()
@@ -20,6 +18,12 @@ const Subscription = () => {
     const [isSubexp, setSubexp] = useState(null)
     const [isusername, setusername] = useState(null)
     const isMobile = useRecoilValue(isMobileState)
+
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/Academy/Login')
+        }
+    }, [status, router])
 
     useEffect(() => {
         const fetchSubs = async () => {
@@ -71,7 +75,6 @@ const Subscription = () => {
             day: '2-digit',
         })
     }
-
 
     const handlelog = () => {
         router.push('/Academy/Login')
@@ -241,34 +244,6 @@ const Subscription = () => {
 
             {status === 'unauthenticated' && (
                 <>
-                    <div style={{ paddingTop: '20px' }}></div>
-                    <div className="bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-grey-950 overflow-hidden rounded-xl border border-grey-900 bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat text-nowrap lg:mx-[300px] mx-3 px-[10px] py-3 shadow-2xl transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
-                        <div className="grid grid-cols-2 py-8 gap-x-1 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 justify-center place-items-center mx-auto max-w-8xl">
-                            <div className="gap-4 flex justify-center items-center sm:justify-start ">
-                                <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                                    <svg
-                                        className="absolute w-10 h-10 text-gray-400 -right-0 top-2"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                            clipRule="evenodd"
-                                        ></path>
-                                    </svg>
-                                </div>
-                                <Button
-                                    radius="full"
-                                    className="bg-gradient-to-tr from-black to-black text-white shadow-lg"
-                                    onClick={handlelog}
-                                >
-                                    Login
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
                     <div
                         className="h-screen"
                         style={{ height: 'calc(100vh - 560px)' }}

@@ -10,7 +10,6 @@ import { Spinner } from '@nextui-org/react'
 import { useRecoilValue } from 'recoil'
 import { isDarkS } from '../utils/recoilstate3'
 
-
 export default function Login() {
     const isDark = useRecoilValue(isDarkS)
     const [email, setEmail] = useState('')
@@ -78,6 +77,12 @@ export default function Login() {
         }
     }
 
+    useEffect(() => {
+        if (status === 'authenticated') {
+            router.push('/Academy/Profile')
+        }
+    }, [status, router])
+
     if (isstatus === 'loading') {
         return <div></div>
     }
@@ -117,19 +122,7 @@ export default function Login() {
                 </nav>
             </div>
             {status === 'authenticated' ? (
-                <div className="flex items-center justify-center h-[50vh]">
-                    <p className={`dark:text-white`}>Logged in--</p>
-                    <br></br>
-                    <button>
-                        <Link
-                            href="/Academy/Profile"
-                            className={`dark:text-white underline`}
-                            scroll={false}
-                        >
-                            My Profile💪:D
-                        </Link>
-                    </button>
-                </div>
+                null
             ) : (
                 <form
                     onSubmit={handleFormSubmit}
