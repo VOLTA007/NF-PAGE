@@ -59,7 +59,7 @@ export default function Footer() {
                                 className="hover:underline me-4 md:me-6"
                                 scroll={false}
                             >
-                                Pricing
+                                Subscribe
                             </Link>
                         </li>
                     </ul>
