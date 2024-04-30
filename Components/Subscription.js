@@ -6,10 +6,13 @@ import Toggler from './Toggler'
 import { useRecoilValue } from 'recoil'
 import { isMobileState } from '../utils/recoilState'
 import Link from 'next/link'
+import { Button } from '@nextui-org/react'
+import { useRouter } from 'next/router'
 
 
 
 const Subscription = () => {
+    const router = useRouter()
     const { data: session, status } = useSession()
     const isAuthenticated = status === 'authenticated'
     const [isSubscribed, setIsSubscribed] = useState(null)
@@ -67,6 +70,11 @@ const Subscription = () => {
             month: '2-digit',
             day: '2-digit',
         })
+    }
+
+
+    const handlelog = () => {
+        router.push('/Academy/Login')
     }
 
     return (
@@ -220,12 +228,6 @@ const Subscription = () => {
                                             Unsubscribed
                                         </span>
                                     </p>
-                                    <p style={{ marginTop: '8px' }}>
-                                        Sub Type: Unsubscribed
-                                    </p>
-                                    <p style={{ marginTop: '8px' }}>
-                                        Sub Expiration Date: Unsubscribed
-                                    </p>
                                 </div>
                             </div>
                             <div
@@ -257,9 +259,13 @@ const Subscription = () => {
                                         ></path>
                                     </svg>
                                 </div>
-                                <p className="dark:text-white text-lg">
-                                    Welcome😊 <br></br> {' '}
-                                </p>
+                                <Button
+                                    radius="full"
+                                    className="bg-gradient-to-tr from-black to-black text-white shadow-lg"
+                                    onClick={handlelog}
+                                >
+                                    Login
+                                </Button>
                             </div>
                         </div>
                     </div>
