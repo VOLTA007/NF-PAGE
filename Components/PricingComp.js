@@ -90,6 +90,10 @@ export const PricingComp = () => {
         setisclicked('ok')
     }
 
+    const handllog = () => {
+        router.push('/Academy/Profile')
+    }
+
     return (
         <>
             <div style={{ paddingTop: '40px' }}></div>
@@ -118,6 +122,7 @@ export const PricingComp = () => {
                                     color="default"
                                     radius="lg"
                                     size="sm"
+                                    onClick={handllog}
                                 >
                                     My Profile
                                 </Button>
