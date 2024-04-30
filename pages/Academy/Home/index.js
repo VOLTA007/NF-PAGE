@@ -9,6 +9,19 @@ export default function Home() {
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
     useEffect(() => {
+        const link = document.createElement('link')
+        link.href =
+            'https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap'
+        link.rel = 'stylesheet'
+        document.head.appendChild(link)
+
+        return () => {
+            document.head.removeChild(link)
+        }
+    }, [])
+    
+
+    useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
     }, [isMobileWidthHook])
 
