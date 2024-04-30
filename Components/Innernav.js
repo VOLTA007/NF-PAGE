@@ -55,7 +55,7 @@ const Innernav = () => {
     const Links = [
         { title: 'Home', href: '/Academy/Home' },
         { title: 'About', href: '/Academy/About' },
-        { title: 'Pricing', href: '/Academy/Pricing' },
+        { title: 'Subscribe', href: '/Academy/Pricing' },
         {
             title: session?.user ? 'Logout' : 'Login', // Check if user is authenticated
             href: session?.user ? '#' : '/Academy/Login', // Use '#' for Logout when authenticated
