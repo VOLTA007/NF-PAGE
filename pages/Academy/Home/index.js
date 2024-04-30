@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
+import { Button } from '@nextui-org/react'
 
 export default function Home() {
     const [isMobileWidth, setIsMobileWidth] = useState(null)
@@ -47,11 +48,15 @@ export default function Home() {
                                 balanced eating and lifestyle choices
                             </p>
                         </div>
+                        <div className='flex justify-center items-center gap-4 md:mt-10 mt-10'>
+                            <Button className='w-[180px] h-[50px]' color="success">Subscribe</Button>
+                            <Button className='bg-white text-black'>Testomnials</Button>
+                        </div>
                     </div>
                     <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6 ">
                         <Image
                             isBlurred
-                            width={imageWidth} // Use the calculated imageWidth
+                            width={imageWidth}
                             src="/Abdo.jpg"
                             alt="Doctor Image"
                             className="m-5"
