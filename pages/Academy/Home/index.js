@@ -19,7 +19,7 @@ export default function Home() {
             document.head.removeChild(link)
         }
     }, [])
-    
+
 
     useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
@@ -35,14 +35,20 @@ export default function Home() {
                 <div style={{ paddingBottom: '40px' }}></div>
 
                 <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0">
-                    <div className="flex justify-center">
+                    <div className="flex justify-center flex-col">
                         <h1 className="md:text-7xl text-3xl inter-unique slant-10 text-center">
                             Im Abdalrahman,
                             <br />
                             your nutritionist
                         </h1>
+                        <div className="text-center mt-4 mb-2 inter-unique slant-10 text-balance">
+                            <p>
+                                Join my journy to achieve optimal health through
+                                balanced eating and lifestyle choices
+                            </p>
+                        </div>
                     </div>
-                    <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6">
+                    <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6 ">
                         <Image
                             isBlurred
                             width={imageWidth} // Use the calculated imageWidth
