@@ -6,7 +6,7 @@ import { useMediaQuery } from '@react-hook/media-query'
 export default function Home() {
     const [isMobileWidth, setIsMobileWidth] = useState(null)
 
-    const isMobileWidthHook = useMediaQuery('(max-width: 1023px)') // Adjust width breakpoint as needed
+    const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
     useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
