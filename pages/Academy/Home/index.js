@@ -49,7 +49,7 @@ export default function Home() {
                                 balanced eating and lifestyle choices
                             </p>
                         </div>
-                        <div className="flex justify-center items-center gap-4 md:mt-10 mt-10">
+                        <div className="flex justify-center items-center gap-4 md:mt-10 mt-10 mx-1">
                             <Card
                                 isFooterBlurred
                                 radius="lg"
@@ -91,7 +91,7 @@ export default function Home() {
                                 />
                                 <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
                                     <p className="text-tiny text-black dark:text-white ">
-                                        See Examples from our people
+                                        See from our people
                                     </p>
                                     <Button
                                         className="text-tiny bg-black/20 text-black  dark:text-white"
