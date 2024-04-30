@@ -35,13 +35,13 @@ export default function Home() {
                 <div style={{ paddingBottom: '40px' }}></div>
 
                 <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0">
-                    <div className="flex justify-center flex-col">
+                    <div className="flex flex-col">
                         <h1 className="md:text-7xl text-3xl inter-unique slant-10 text-center">
                             Im Abdalrahman,
                             <br />
                             your nutritionist
                         </h1>
-                        <div className="text-center mt-4 mb-2 inter-unique slant-10 text-balance">
+                        <div className="text-center mt-4 mb-2 inter-unique slant-10 text-balance md:mt-16">
                             <p>
                                 Join my journy to achieve optimal health through
                                 balanced eating and lifestyle choices
