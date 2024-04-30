@@ -24,9 +24,9 @@ export default function Home() {
                 <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0">
                     <div className="flex justify-center">
                         <h1 className="md:text-7xl text-3xl inter-unique slant-10 text-center">
-                            IM Abdalrahman,
+                            Im Abdalrahman,
                             <br />
-                            your Nutritionist
+                            your nutritionist
                         </h1>
                     </div>
                     <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6">
