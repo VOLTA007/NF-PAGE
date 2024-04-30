@@ -18,8 +18,8 @@ import { isMobileState } from '../utils/recoilState'
 
 
 const PageWrapper = ({ children, session }) => {
-    const [isMobileUserAgent, setIsMobileUserAgent] = useState(false)
-    const [isMobileWidth, setIsMobileWidth] = useState(false)
+    const [isMobileUserAgent, setIsMobileUserAgent] = useState(null)
+    const [isMobileWidth, setIsMobileWidth] = useState(null)
     const [isMobileRecoil, setIsMobileRecoil] = useRecoilState(isMobileState)
     const [isactive, setIsactive] = useState(false)
     const pathname = usePathname()
