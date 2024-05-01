@@ -1,29 +1,19 @@
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
 import React, { useEffect, useState, useRef } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { Button } from '@nextui-org/react'
 import { Card, CardFooter } from '@nextui-org/react'
-
-
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/effect-cards'
-
-
-
-// import required modules
 import { EffectCards } from 'swiper/modules'
 
 export default function Home() {
     const [isMobileWidth, setIsMobileWidth] = useState(null)
 
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
-
 
     useEffect(() => {
         const link = document.createElement('link')
