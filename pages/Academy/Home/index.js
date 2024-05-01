@@ -126,7 +126,7 @@ export default function Home() {
                                 effect={'cards'}
                                 grabCursor={true}
                                 modules={[EffectCards]}
-                                className="mySwiper w-60 h-80"
+                                className="mySwiper md:w-[400px] w-60 md:h-fit"
                             >
                                 <SwiperSlide className="flex items-center justify-center text-[22px] font-[bold] rounded-[18px]">
                                     <Image src="/Abdo.jpg" alt="Doctor Image" />
