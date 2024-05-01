@@ -119,10 +119,10 @@ export default function Home() {
                                 className="mySwiper md:w-[400px] w-60 md:h-fit flex items-center justify-center text-[22px] font-[bold] rounded-[18px]"
                             >
                                 <SwiperSlide>
-                                    <Image src="/Abdo.jpg" alt="Doctor Image" />
+                                    <img src="/Abdo.jpg" alt="Doctor Image" />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <Image
+                                    <img
                                         src="/1111111.jpg"
                                         alt="Doctor Image"
                                     />
