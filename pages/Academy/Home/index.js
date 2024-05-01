@@ -1,5 +1,4 @@
-import 'swiper/css'
-import 'swiper/css/effect-cards'
+
 
 import React, { useEffect, useState, useRef } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
