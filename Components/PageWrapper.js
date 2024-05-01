@@ -26,13 +26,19 @@ const PageWrapper = ({ children, session }) => {
     })
 
     useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo(0, 0)
+        }, 0)
+    }, [isactive, setIsactive])
+
+    useEffect(() => {
         if (isactive) {
             document.body.style.overflow = 'hidden'
         } else {
             document.body.style.overflow = 'auto'
         }
     }, [isactive, setIsactive])
-
+    
 
     useEffect(() => {
         const resize = () => {
