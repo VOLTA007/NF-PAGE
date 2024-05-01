@@ -1,10 +1,19 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 
 const NavBar2 = ({ isactive, setIsactive }) => {
 
     const sideMenuRef = useRef(null)
+
+    useEffect(() => {
+        if (isactive) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+    }, [isactive, setIsactive])
+
 
 
 
@@ -26,11 +35,13 @@ const NavBar2 = ({ isactive, setIsactive }) => {
         }
     }, [isactive, setIsactive])
 
+    const menuPositionClass = isactive ? 'fixed' : 'absolute'
+
     return (
         <>
             <div
                 onClick={() => setIsactive(!isactive)}
-                className="absolute top-[65px] right-2 uppercase h-[40px] w-[100px] bg-slate-100 dark:bg-gray-900  rounded-[25px] cursor-pointer overflow-hidden z-40"
+                className={`${menuPositionClass} top-[65px] right-2 uppercase h-[40px] w-[100px] bg-slate-100 dark:bg-gray-900  rounded-[25px] cursor-pointer overflow-hidden z-40`}
             >
                 <motion.div
                     ref={sideMenuRef}

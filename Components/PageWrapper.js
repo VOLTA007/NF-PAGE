@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { NextUIProvider } from '@nextui-org/react'
+import { NextUIProvider, radio } from '@nextui-org/react'
 import { SessionProvider } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import Footer from '@/Components/Footer'
@@ -10,12 +10,8 @@ import NavBar2 from '@/Components/NavBar2'
 import NavbarDesktop from '@/Components/NavbarDesktop'
 import Innernav from './Innernav'
 import { useMediaQuery } from '@react-hook/media-query'
-
 import { useRecoilState } from 'recoil'
 import { isMobileState } from '../utils/recoilState'
-
-
-
 
 const PageWrapper = ({ children, session }) => {
     const [isMobileUserAgent, setIsMobileUserAgent] = useState(null)
@@ -65,7 +61,6 @@ const PageWrapper = ({ children, session }) => {
     // Check mobile status based on width with media query
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)') // Adjust width breakpoint as needed
 
-    
     useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
     }, [isMobileWidthHook])
@@ -80,12 +75,15 @@ const PageWrapper = ({ children, session }) => {
         return <div></div>
     }
 
+    const menuPositionClass = isactive ? 'fixed' : 'absolute'
+
     const variants = {
         open: {
             width: '100vw',
-            height: '240px',
-            top: '-40px',
+            height: '100vh',
+            top: '-65px',
             right: '-8px',
+            borderRadius: '0px',
             transition: {
                 duration: 0.75,
                 ease: [0.76, 0, 0.24, 1],
@@ -120,7 +118,9 @@ const PageWrapper = ({ children, session }) => {
                             {isMobileRecoil ? <Header /> : <div></div>}
                             {isMobileRecoil ? (
                                 <>
-                                    <div className="absolute top-[65px] right-[8px] z-40">
+                                    <div
+                                        className={`${menuPositionClass} top-[65px] right-[8px] z-40`}
+                                    >
                                         <motion.div
                                             className=" bg-slate-100 dark:bg-gray-900 rounded-[25px] relative z-40"
                                             variants={variants}
