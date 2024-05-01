@@ -26,6 +26,15 @@ const PageWrapper = ({ children, session }) => {
     })
 
     useEffect(() => {
+        if (isactive) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+    }, [isactive, setIsactive])
+
+
+    useEffect(() => {
         const resize = () => {
             setDimensions({
                 height: window.innerHeight,

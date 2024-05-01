@@ -6,13 +6,7 @@ const NavBar2 = ({ isactive, setIsactive }) => {
 
     const sideMenuRef = useRef(null)
 
-    useEffect(() => {
-        if (isactive) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'auto'
-        }
-    }, [isactive, setIsactive])
+    
 
 
 
