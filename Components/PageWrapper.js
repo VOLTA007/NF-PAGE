@@ -185,7 +185,7 @@ const SVG = ({ width, height }) => {
         enter: {
             d: targetPath,
             transition: {
-                duration: 0.75,
+                duration: 0.5,
                 delay: 0.3,
                 ease: [0.76, 0, 0.24, 1],
             },
@@ -193,7 +193,7 @@ const SVG = ({ width, height }) => {
         exit: {
             d: initialPath,
             transition: {
-                duration: 0.75,
+                duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
             },
         },
@@ -206,7 +206,7 @@ const SVG = ({ width, height }) => {
         enter: {
             top: '-100vh',
             transition: {
-                duration: 0.75,
+                duration: 0.5,
                 delay: 0.3,
                 ease: [0.76, 0, 0.24, 1],
             },
@@ -217,7 +217,7 @@ const SVG = ({ width, height }) => {
         exit: {
             top: '-300px',
             transition: {
-                duration: 0.75,
+                duration: 0.5,
                 ease: [0.76, 0, 0.24, 1],
             },
         },

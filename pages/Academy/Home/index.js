@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState, useRef } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
