@@ -13,7 +13,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-cards'
-import '@/styles/swiperr.module.css'
 
 
 
@@ -121,18 +120,18 @@ export default function Home() {
                             </Card>
                         </div>
                     </div>
-                    <div className="flex justify-center mb-10  md:mt-0 mt-6 ">
-                        <div className=" md:w-[500px] w-[300px]">
+                    <div className="flex justify-center mb-10  md:mt-0 mt-6 overflow-hidden ">
+                        <div className="md:w-[500px] w-[300px] ">
                             <Swiper
                                 effect={'cards'}
                                 grabCursor={true}
                                 modules={[EffectCards]}
                                 className="mySwiper"
                             >
-                                <SwiperSlide>
+                                <SwiperSlide className="flex items-center justify-center text-[22px] font-[bold] rounded-[18px]">
                                     <Image src="/Abdo.jpg" alt="Doctor Image" />
                                 </SwiperSlide>
-                                <SwiperSlide>
+                                <SwiperSlide className="flex items-center justify-center text-[22px] font-[bold] rounded-[18px]">
                                     <Image
                                         src="/1111111.jpg"
                                         alt="Doctor Image"
