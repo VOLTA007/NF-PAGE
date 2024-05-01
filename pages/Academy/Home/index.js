@@ -110,7 +110,7 @@ export default function Home() {
                             </Card>
                         </div>
                     </div>
-                    <div className="flex justify-center mb-10  md:mt-0 mt-6 overflow-hidden ">
+                    <div className="flex justify-center items-center  mb-10  md:mt-0 mt-6 overflow-hidden ">
                         <div>
                             <Swiper
                                 effect={'cards'}
