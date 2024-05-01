@@ -110,19 +110,19 @@ export default function Home() {
                             </Card>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center  mb-10  md:mt-0 mt-6 overflow-hidden ">
+                    <div className="flex justify-center items-center mb-10  md:mt-0 mt-6 overflow-hidden ">
                         <div>
                             <Swiper
                                 effect={'cards'}
                                 grabCursor={true}
                                 modules={[EffectCards]}
-                                className="mySwiper md:w-[400px] w-60 md:h-fit flex items-center justify-center text-[22px] font-[bold] rounded-[18px]"
+                                className=" md:w-[400px] w-60 md:h-[400px] flex items-center justify-center rounded-[18px]"
                             >
                                 <SwiperSlide>
-                                    <img src="/Abdo.jpg" alt="Doctor Image" />
+                                    <Image src="/Abdo.jpg" alt="Doctor Image" />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img
+                                    <Image
                                         src="/1111111.jpg"
                                         alt="Doctor Image"
                                     />
