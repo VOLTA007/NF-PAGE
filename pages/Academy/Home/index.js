@@ -121,12 +121,12 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="flex justify-center mb-10  md:mt-0 mt-6 overflow-hidden ">
-                        <div className="md:w-[500px] w-[300px] ">
+                        <div className=" ">
                             <Swiper
                                 effect={'cards'}
                                 grabCursor={true}
                                 modules={[EffectCards]}
-                                className="mySwiper"
+                                className="mySwiper w-60 h-80"
                             >
                                 <SwiperSlide className="flex items-center justify-center text-[22px] font-[bold] rounded-[18px]">
                                     <Image src="/Abdo.jpg" alt="Doctor Image" />
