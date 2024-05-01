@@ -28,6 +28,7 @@
     "flickity": "^3.0.0",
     "framer-motion": "^11.1.1",
     "gsap": "^3.12.5",
+    "keen-slider": "^6.8.6",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.1",
     "next": "14.2.2",
@@ -42,7 +43,8 @@
     "recoil": "^0.7.7",
     "redux": "^5.0.1",
     "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

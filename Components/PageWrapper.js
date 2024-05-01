@@ -65,6 +65,7 @@ const PageWrapper = ({ children, session }) => {
     // Check mobile status based on width with media query
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)') // Adjust width breakpoint as needed
 
+    
     useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
     }, [isMobileWidthHook])

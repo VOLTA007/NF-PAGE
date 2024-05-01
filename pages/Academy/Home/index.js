@@ -1,14 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { Button } from '@nextui-org/react'
 import { Card, CardFooter } from '@nextui-org/react'
 
+
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+import '@/styles/swiperr.module.css'
+
+
+
+// import required modules
+import { EffectCards } from 'swiper/modules'
+
 export default function Home() {
     const [isMobileWidth, setIsMobileWidth] = useState(null)
 
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
+
 
     useEffect(() => {
         const link = document.createElement('link')
@@ -21,7 +37,6 @@ export default function Home() {
             document.head.removeChild(link)
         }
     }, [])
-
 
     useEffect(() => {
         setIsMobileWidth(isMobileWidthHook)
@@ -56,7 +71,7 @@ export default function Home() {
                                 className="border-none"
                             >
                                 <Image
-                                    alt="Woman listing to music "
+                                    alt=""
                                     className="object-cover dark:invert"
                                     height={200}
                                     src="/subscribe.gif"
@@ -106,17 +121,29 @@ export default function Home() {
                             </Card>
                         </div>
                     </div>
-                    <div className="flex justify-center mb-10 mr-10 md:mt-0 mt-6 ">
-                        <Image
-                            isBlurred
-                            width={imageWidth}
-                            src="/Abdo.jpg"
-                            alt="Doctor Image"
-                            className="m-5"
-                        />
+                    <div className="flex justify-center mb-10  md:mt-0 mt-6 ">
+                        <div className=" md:w-[500px] w-[300px]">
+                            <Swiper
+                                effect={'cards'}
+                                grabCursor={true}
+                                modules={[EffectCards]}
+                                className="mySwiper"
+                            >
+                                <SwiperSlide>
+                                    <Image src="/Abdo.jpg" alt="Doctor Image" />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Image
+                                        src="/1111111.jpg"
+                                        alt="Doctor Image"
+                                    />
+                                </SwiperSlide>
+                            </Swiper>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div
                 className="h-screen"
                 style={{ height: 'calc(100vh - 590px)' }}
