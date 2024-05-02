@@ -7,12 +7,41 @@ import { Card, CardFooter } from '@nextui-org/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper/modules'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
+import axios from 'axios'
 
 export default function Home() {
+    const { data: session, status } = useSession()
+    const isAuthenticated = status === 'authenticated'
     const router = useRouter()
     const [isMobileWidth, setIsMobileWidth] = useState(null)
-
+    const [issubsactive, setIssubsactive] = useState()
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
+
+    useEffect(() => {
+        const fetchSubs = async () => {
+            try {
+                if (status === 'authenticated') {
+                    const response = await axios.get(
+                        `/api/subs?email=${session?.user?.email}`
+                    )
+                    const { is_subscribed } = response.data
+
+                    setIssubsactive(is_subscribed)
+                }
+            } catch (error) {
+                console.error('Error fetching subs:', error)
+            }
+        }
+
+        if (isAuthenticated) {
+            fetchSubs()
+        }
+    }, [isAuthenticated, session?.user?.email])
+
+    const handllog = () => {
+        router.push('/Academy/Profile')
+    }
 
     useEffect(() => {
         const link = document.createElement('link')
@@ -36,13 +65,12 @@ export default function Home() {
     const handlesub = () => {
         router.push('/Academy/Pricing')
     }
-    
+
     return (
         <>
             <div className="bg-[#fffaf6] dark:bg-slate-800 w-fill h-fit rounded-[30px] lg:mx-10 mt-4 mx-2">
                 <Userwelcome />
                 <div style={{ paddingBottom: '40px' }}></div>
-
                 <div className="grid md:grid-cols-[repeat(2,1fr)] grid-rows-[1fr] gap-x-0 gap-y-0">
                     <div className="flex flex-col justify-center md:mb-40">
                         <h1 className=" md:text-7xl text-3xl inter-unique slant-10 text-center">
@@ -57,34 +85,70 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="flex justify-center items-center gap-4 md:mt-10 mt-10 mx-1">
-                            <Card
-                                isFooterBlurred
-                                radius="lg"
-                                className="border-none"
-                            >
-                                <Image
-                                    alt=""
-                                    className="object-cover dark:invert"
-                                    height={200}
-                                    src="/subscribe.gif"
-                                    width={200}
-                                />
-                                <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-                                    <p className="text-tiny text-black dark:text-white ">
-                                        Choose Your Plan Now!
-                                    </p>
-                                    <Button
-                                        className="text-tiny bg-black/20 text-black dark:text-white "
-                                        variant="flat"
-                                        color="default"
+                            {issubsactive ? (
+                                <>
+                                    <Card
+                                        isFooterBlurred
                                         radius="lg"
-                                        size="sm"
-                                        onClick={handlesub}
+                                        className="border-none"
                                     >
-                                        Subscribe
-                                    </Button>
-                                </CardFooter>
-                            </Card>
+                                        <Image
+                                            alt="Woman listing to music"
+                                            className="object-cover dark:invert"
+                                            height={200}
+                                            src="/diamond.gif"
+                                            width={200}
+                                        />
+                                        <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                                            <p className="text-tiny text-black dark:text-white ">
+                                                Your are Subscribed
+                                            </p>
+                                            <Button
+                                                className="text-tiny bg-black/20 text-black dark:text-white "
+                                                variant="flat"
+                                                color="default"
+                                                radius="lg"
+                                                size="sm"
+                                                onClick={handllog}
+                                            >
+                                                My Profile
+                                            </Button>
+                                        </CardFooter>
+                                    </Card>
+                                </>
+                            ) : (
+                                <>
+                                    <Card
+                                        isFooterBlurred
+                                        radius="lg"
+                                        className="border-none"
+                                    >
+                                        <Image
+                                            alt=""
+                                            className="object-cover dark:invert"
+                                            height={200}
+                                            src="/subscribe.gif"
+                                            width={200}
+                                        />
+                                        <CardFooter className=" justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                                            <p className="text-tiny text-black dark:text-white ">
+                                                Choose Your Plan Now!
+                                            </p>
+                                            <Button
+                                                className="text-tiny bg-black/20 text-black dark:text-white "
+                                                variant="flat"
+                                                color="default"
+                                                radius="lg"
+                                                size="sm"
+                                                onClick={handlesub}
+                                            >
+                                                Subscribe
+                                            </Button>
+                                        </CardFooter>
+                                    </Card>
+                                </>
+                            )}
+
                             <Card
                                 isFooterBlurred
                                 radius="lg"
