@@ -107,7 +107,7 @@ export default function Home() {
                             </Card>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center mb-10  md:mt-0 mt-6 overflow-hidden ">
+                    <div className="flex justify-center items-center mb-10  md:mt-0 mt-6 overflow-hidden">
                         <div>
                             <Swiper
                                 effect={'cards'}
@@ -115,10 +115,10 @@ export default function Home() {
                                 modules={[EffectCards]}
                                 className="mySwiper md:w-[400px] w-60 md:h-fit flex items-center justify-center rounded-[18px]"
                             >
-                                <SwiperSlide>
+                                <SwiperSlide className="flex items-center justify-center rounded-[18px]">
                                     <Image src="/Abdo.jpg" alt="Doctor Image" />
                                 </SwiperSlide>
-                                <SwiperSlide>
+                                <SwiperSlide className="flex items-center justify-center rounded-[18px]">
                                     <Image
                                         src="/1111111.jpg"
                                         alt="Doctor Image"
