@@ -15,7 +15,7 @@ export default function Home() {
     const isAuthenticated = status === 'authenticated'
     const router = useRouter()
     const [isMobileWidth, setIsMobileWidth] = useState(null)
-    const [issubsactive, setIssubsactive] = useState()
+    const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
     useEffect(() => {
