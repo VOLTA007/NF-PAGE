@@ -6,8 +6,10 @@ import { Button } from '@nextui-org/react'
 import { Card, CardFooter } from '@nextui-org/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper/modules'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+    const router = useRouter()
     const [isMobileWidth, setIsMobileWidth] = useState(null)
 
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
@@ -31,6 +33,10 @@ export default function Home() {
     // Set different image widths based on isMobileWidth
     const imageWidth = isMobileWidth ? 320 : 500
 
+    const handlesub = () => {
+        router.push('/Academy/Pricing')
+    }
+    
     return (
         <>
             <div className="bg-[#fffaf6] dark:bg-slate-800 w-fill h-fit rounded-[30px] lg:mx-10 mt-4 mx-2">
@@ -73,6 +79,7 @@ export default function Home() {
                                         color="default"
                                         radius="lg"
                                         size="sm"
+                                        onClick={handlesub}
                                     >
                                         Subscribe
                                     </Button>
