@@ -6,10 +6,6 @@ const NavBar2 = ({ isactive, setIsactive }) => {
 
     const sideMenuRef = useRef(null)
 
-    
-
-
-
 
     useEffect(() => {
         function handleClickOutside(event) {

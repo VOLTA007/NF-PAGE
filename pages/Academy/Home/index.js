@@ -63,7 +63,7 @@ export default function Home() {
     const imageWidth = isMobileWidth ? 320 : 500
 
     const handlesub = () => {
-        router.push('/Academy/Pricing')
+        router.push('/Academy/Pricing', undefined, { scroll: false })
     }
 
     return (
