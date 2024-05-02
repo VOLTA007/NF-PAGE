@@ -5,8 +5,6 @@ import { useSession } from 'next-auth/react'
 import Toggler from './Toggler'
 import { useRecoilValue } from 'recoil'
 import { isMobileState } from '../utils/recoilState'
-import Link from 'next/link'
-import { Button } from '@nextui-org/react'
 import { useRouter } from 'next/router'
 
 const Subscription = () => {

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faDollarSign,
     faStairs,
-    faTurnUp,
     faGear,
 } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
