@@ -18,21 +18,22 @@ export async function getServerSideProps(context) {
         context.res,
         authOptions
     )
+
     try {
         const email = session?.user?.email
-        const response = await axios.get(`/api/subs?email=${email}`)
+        const response = await axios.post(`/api/subs?email=${email}`)
         const { is_subscribed } = response.data
 
         return {
             props: {
-                isSubscribed: is_subscribed || null, // Use a default value if is_subscribed is undefined
+                isSubscribed: is_subscribed || null,
             },
         }
     } catch (error) {
         console.error('Error fetching subs:', error)
         return {
             props: {
-                isSubscribed: true,
+                isSubscribed: null,
             },
         }
     }
@@ -46,6 +47,8 @@ export default function Home({ isSubscribed }) {
     const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
+
+
     const handllog = () => {
         router.push('/Academy/Profile')
     }
@@ -54,6 +57,7 @@ export default function Home({ isSubscribed }) {
         // Update issubsactive state when isSubscribed prop changes
         setIssubsactive(isSubscribed)
     }, [isSubscribed]) // Re-run effect when isSubscribed changes
+    
 
     useEffect(() => {
         const link = document.createElement('link')
@@ -220,3 +224,4 @@ export default function Home({ isSubscribed }) {
         </>
     )
 }
+
