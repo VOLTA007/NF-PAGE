@@ -8,9 +8,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper/modules'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
-import axios from 'axios'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth/next'
+
 
 export async function getServerSideProps(context) {
     const session = await getServerSession(
@@ -20,9 +20,12 @@ export async function getServerSideProps(context) {
     )
 
     try {
-        const email = session?.user?.email
-        const response = await axios.post(`/api/subs?email=${email}`)
-        const { is_subscribed } = response.data
+        const response = await fetch(
+            `http://localhost:3000/api/subs?email=${encodeURIComponent(
+                session?.user?.email
+            )}`
+        )
+        const { is_subscribed } = await response.json()
 
         return {
             props: {
@@ -47,8 +50,6 @@ export default function Home({ isSubscribed }) {
     const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
-
-
     const handllog = () => {
         router.push('/Academy/Profile')
     }
@@ -57,7 +58,6 @@ export default function Home({ isSubscribed }) {
         // Update issubsactive state when isSubscribed prop changes
         setIssubsactive(isSubscribed)
     }, [isSubscribed]) // Re-run effect when isSubscribed changes
-    
 
     useEffect(() => {
         const link = document.createElement('link')
@@ -224,4 +224,3 @@ export default function Home({ isSubscribed }) {
         </>
     )
 }
-
