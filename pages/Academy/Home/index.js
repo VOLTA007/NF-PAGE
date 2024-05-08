@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
@@ -13,7 +13,7 @@ import axios from 'axios'
 
 export async function getServerSideProps(context) {
     try {
-        const { isAuthenticated, session } = context.req
+        const { session } = context.req
 
         const email = session?.user?.email
 
@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Home() {
+export default function Home({ isSubscribed }) {
     const { data: session, status } = useSession()
     const isAuthenticated = status === 'authenticated'
     const router = useRouter()
@@ -48,10 +48,14 @@ export default function Home() {
     const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
-
     const handllog = () => {
         router.push('/Academy/Profile')
     }
+
+    useLayoutEffect(() => {
+        // Update issubsactive state when isSubscribed prop changes
+        setIssubsactive(isSubscribed)
+    }, [isSubscribed]) // Re-run effect when isSubscribed changes
 
     useEffect(() => {
         const link = document.createElement('link')
