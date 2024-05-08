@@ -9,32 +9,30 @@ import { EffectCards } from 'swiper/modules'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import axios from 'axios'
-
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { getServerSession } from 'next-auth/next'
 
 export async function getServerSideProps(context) {
+    const session = await getServerSession(
+        context.req,
+        context.res,
+        authOptions
+    )
     try {
-        const { session } = context.req
-
         const email = session?.user?.email
-
-        if (!email) {
-            // Handle case where email is missing or invalid
-            throw new Error('User email not found in session.')
-        }
-
         const response = await axios.get(`/api/subs?email=${email}`)
         const { is_subscribed } = response.data
 
         return {
             props: {
-                isSubscribed: is_subscribed,
+                isSubscribed: is_subscribed || null, // Use a default value if is_subscribed is undefined
             },
         }
     } catch (error) {
         console.error('Error fetching subs:', error)
         return {
             props: {
-                isSubscribed: null, // Set default value or handle error
+                isSubscribed: true,
             },
         }
     }
