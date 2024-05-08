@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
@@ -18,7 +18,7 @@ export default function Home() {
     const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const fetchSubs = async () => {
             try {
                 if (status === 'authenticated') {
