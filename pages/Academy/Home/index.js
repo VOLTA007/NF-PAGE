@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Userwelcome from '@/Components/Userwelcome'
 import { Image } from '@nextui-org/react'
 import { useMediaQuery } from '@react-hook/media-query'
@@ -10,6 +10,36 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import axios from 'axios'
 
+
+export async function getServerSideProps(context) {
+    try {
+        const { isAuthenticated, session } = context.req
+
+        const email = session?.user?.email
+
+        if (!email) {
+            // Handle case where email is missing or invalid
+            throw new Error('User email not found in session.')
+        }
+
+        const response = await axios.get(`/api/subs?email=${email}`)
+        const { is_subscribed } = response.data
+
+        return {
+            props: {
+                isSubscribed: is_subscribed,
+            },
+        }
+    } catch (error) {
+        console.error('Error fetching subs:', error)
+        return {
+            props: {
+                isSubscribed: null, // Set default value or handle error
+            },
+        }
+    }
+}
+
 export default function Home() {
     const { data: session, status } = useSession()
     const isAuthenticated = status === 'authenticated'
@@ -18,26 +48,6 @@ export default function Home() {
     const [issubsactive, setIssubsactive] = useState(null)
     const isMobileWidthHook = useMediaQuery('(max-width: 1023px)')
 
-    useLayoutEffect(() => {
-        const fetchSubs = async () => {
-            try {
-                if (status === 'authenticated') {
-                    const response = await axios.get(
-                        `/api/subs?email=${session?.user?.email}`
-                    )
-                    const { is_subscribed } = response.data
-
-                    setIssubsactive(is_subscribed)
-                }
-            } catch (error) {
-                console.error('Error fetching subs:', error)
-            }
-        }
-
-        if (isAuthenticated) {
-            fetchSubs()
-        }
-    }, [isAuthenticated, session?.user?.email])
 
     const handllog = () => {
         router.push('/Academy/Profile')
