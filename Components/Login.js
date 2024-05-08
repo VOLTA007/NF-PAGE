@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { Spinner } from '@nextui-org/react'
-
 import { useRecoilValue } from 'recoil'
 import { isDarkS } from '../utils/recoilstate3'
 

@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth/next'
+import domain from '@/utils/Config'
 
 
 export async function getServerSideProps(context) {
@@ -21,9 +22,7 @@ export async function getServerSideProps(context) {
 
     try {
         const response = await fetch(
-            `http://localhost:3000/api/subs?email=${encodeURIComponent(
-                session?.user?.email
-            )}`
+            `${domain}/subs?email=${encodeURIComponent(session?.user?.email)}`
         )
         const { is_subscribed } = await response.json()
 
